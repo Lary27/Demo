@@ -956,6 +956,97 @@ body.speed100 .brand::after{content:"⏩ 100x";background:#ff6b6b;color:#fff;bor
 .hero-slot .hs-ico{width:46px;height:46px;border-radius:12px;background:#344975;display:flex;align-items:center;justify-content:center;font-size:25px}
 .hero-slot.on .hs-ico{background:linear-gradient(#5ec27a,#2f8f52)}
 .hero-slot small{display:block;color:var(--mute);font-size:11px}
+
+/* === v4: Sistema de Héroes y Modo Coliseo === */
+#coliseumScreen{position:fixed;inset:0;z-index:45;display:none;flex-direction:column;background:radial-gradient(circle at 50% 0%,#3a2416 0%,#1a110b 65%,#0e0906 100%);color:#f7ead5;font-family:inherit}
+#coliseumScreen.open{display:flex}
+.col-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:linear-gradient(180deg,#4a2c18,#2b180c);border-bottom:2px solid #c9973e;box-shadow:0 4px 12px rgba(0,0,0,.6);flex:none}
+.col-back{background:linear-gradient(180deg,#6e4324,#462814);border:1px solid #d4a34a;color:#ffecc7;border-radius:10px;padding:7px 11px;font-weight:900;font-size:12px;cursor:pointer;box-shadow:0 2px 0 #1f1006}
+.col-back:active{transform:translateY(1px)}
+.col-title-wrap{text-align:center;flex:1;min-width:0}
+.col-title-wrap h1{margin:0;font-size:15px;font-weight:900;color:#ffd97d;letter-spacing:.4px;text-shadow:0 2px 4px rgba(0,0,0,.8)}
+.col-title-wrap small{display:block;font-size:10.5px;color:#d6bea0;font-weight:700}
+.col-player-banner{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:8px 12px;background:linear-gradient(90deg,rgba(201,151,62,.18),rgba(82,45,22,.35));border-bottom:1px solid rgba(201,151,62,.35);flex:none}
+.col-stats-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.col-pill{background:rgba(20,12,7,.75);border:1px solid rgba(212,163,74,.45);border-radius:8px;padding:3px 7px;font-size:11px;font-weight:800;color:#ffe6b8}
+.col-pill b{color:#ffd56b}
+.col-subnav{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:8px 10px;background:rgba(18,11,7,.85);border-bottom:1px solid rgba(201,151,62,.3);flex:none}
+.col-tab-btn{background:linear-gradient(180deg,#3b2416,#24150c);border:1px solid rgba(201,151,62,.35);border-radius:10px;padding:7px 4px;color:#d9c2a3;font-size:11px;font-weight:900;cursor:pointer;text-align:center;position:relative}
+.col-tab-btn.active{background:linear-gradient(180deg,#d99b38,#9c6619);border-color:#ffe49e;color:#1f1104;box-shadow:0 2px 8px rgba(217,155,56,.45)}
+.col-tab-btn .col-badge{position:absolute;top:-4px;right:-3px;background:#ef4444;color:#fff;border-radius:99px;padding:1px 5px;font-size:9px;font-weight:900}
+.col-body{flex:1;overflow-y:auto;padding:10px 12px 24px;-webkit-overflow-scrolling:touch}
+.col-sec-title{font-size:12px;font-weight:900;color:#ffd573;text-transform:uppercase;letter-spacing:.5px;margin:6px 0 8px;display:flex;align-items:center;justify-content:space-between}
+.col-card{background:linear-gradient(180deg,rgba(56,35,21,.92),rgba(33,20,12,.95));border:1px solid rgba(201,151,62,.38);border-radius:13px;padding:10px;margin-bottom:9px;box-shadow:0 4px 10px rgba(0,0,0,.45)}
+.squad-slots-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px}
+.sq-slot{background:linear-gradient(180deg,#2e1c11,#1a0f08);border:2px dashed rgba(212,163,74,.45);border-radius:12px;padding:7px 3px;text-align:center;min-height:86px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;position:relative}
+.sq-slot.filled{border-style:solid;border-color:#e3af4b;background:linear-gradient(180deg,#4a2e1b,#29180d)}
+.sq-slot.locked{border-style:solid;border-color:rgba(255,255,255,.15);background:rgba(15,10,7,.75);opacity:.65;cursor:not-allowed}
+.sq-slot .slot-num{position:absolute;top:3px;left:5px;font-size:9px;font-weight:900;color:#c7a67b}
+.sq-slot .slot-ico{font-size:24px;line-height:1.1}
+.sq-slot .slot-nm{font-size:10px;font-weight:900;color:#fff2d6;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.sq-slot .slot-lv{font-size:9px;color:#ffd166;font-weight:800}
+.hero-roster-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.hero-card-v4{background:linear-gradient(180deg,#3d2617,#24150c);border:1px solid rgba(212,163,74,.4);border-radius:12px;padding:9px;display:flex;flex-direction:column;gap:7px}
+.hero-card-v4.in-squad{border-color:#4ade80;box-shadow:0 0 0 1px rgba(74,222,128,.35)}
+.hc-top{display:grid;grid-template-columns:48px 1fr auto;gap:9px;align-items:center}
+.hc-portrait{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;border:2px solid #d4a34a;box-shadow:inset 0 0 10px rgba(0,0,0,.5)}
+.hc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:rgba(14,8,5,.6);border-radius:8px;padding:5px;font-size:10.5px;text-align:center}
+.hc-stats span b{display:block;color:#ffd56b;font-size:11.5px}
+.hc-skills{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;font-size:10px}
+.hc-sk-pill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:4px 6px;color:#ead7bc}
+.hc-sk-pill b{color:#ffd97d;display:block;font-size:10.5px}
+.rival-card{background:linear-gradient(180deg,#3d2416,#23140b);border:1px solid rgba(212,163,74,.45);border-radius:12px;padding:9px 10px;margin-bottom:8px;display:flex;flex-direction:column;gap:7px}
+.rival-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.rival-rank-badge{background:linear-gradient(180deg,#f59e0b,#b45309);color:#1d0d02;font-weight:900;font-size:11px;padding:3px 8px;border-radius:8px;white-space:nowrap}
+.rival-team-row{display:flex;gap:5px;flex-wrap:wrap}
+.rival-mini-hero{background:rgba(15,9,5,.7);border:1px solid rgba(212,163,74,.3);border-radius:8px;padding:3px 6px;font-size:10.5px;font-weight:800;color:#f5e3c6}
+.col-btn{background:linear-gradient(180deg,#e0a33a,#a66c14);border:1px solid #ffe49e;color:#1f1104;border-radius:10px;padding:7px 11px;font-weight:900;font-size:12px;cursor:pointer;box-shadow:0 2px 0 #4a2d05}
+.col-btn:active{transform:translateY(1px)}
+.col-btn.sec{background:linear-gradient(180deg,#4f3320,#301d11);border-color:#b88946;color:#f7e5c8;box-shadow:0 2px 0 #170d06}
+.col-btn.danger{background:linear-gradient(180deg,#dc2626,#991b1b);border-color:#fca5a5;color:#fff;box-shadow:0 2px 0 #450a0a}
+.col-btn:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.6)}
+
+/* Arena Visual 2D */
+.col-arena-stage{position:relative;height:265px;border-radius:14px;overflow:hidden;border:2px solid #d4a34a;background:
+  radial-gradient(ellipse at 50% 35%,rgba(255,210,120,.22),transparent 60%),
+  repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 2px,transparent 2px 38px),
+  linear-gradient(180deg,#4a321e 0%,#755133 42%,#9e7348 43%,#6e4d2e 100%);
+  box-shadow:inset 0 0 30px rgba(0,0,0,.65);margin-bottom:8px}
+.col-arena-arch{position:absolute;top:0;left:0;right:0;height:42%;background:repeating-linear-gradient(90deg,#382314 0 28px,#26170c 28px 34px);border-bottom:3px solid #c9973e;display:flex;align-items:center;justify-content:space-around;padding:0 12px;opacity:.85}
+.col-arena-arch span{font-size:18px;filter:drop-shadow(0 2px 3px #000)}
+.col-arena-timer{position:absolute;top:8px;left:50%;transform:translateX(-50%);background:rgba(18,10,5,.85);border:1px solid #d4a34a;border-radius:99px;padding:3px 12px;font-size:12px;font-weight:900;color:#ffd97d;z-index:5}
+.arena-unit{position:absolute;width:54px;transform:translate(-50%,-50%);transition:left .22s linear,top .22s linear,opacity .3s;text-align:center;z-index:3}
+.arena-unit.dead{opacity:.22;filter:grayscale(1);transform:translate(-50%,-50%) scale(.85)}
+.arena-unit.acting .au-sprite{transform:scale(1.22);filter:drop-shadow(0 0 8px #ffd700)}
+.arena-unit.ulting .au-sprite{transform:scale(1.38);filter:drop-shadow(0 0 14px #ff6b00)}
+.au-bars{background:rgba(12,7,4,.85);border:1px solid rgba(255,255,255,.25);border-radius:5px;padding:2px;margin-bottom:2px}
+.au-hp{height:4px;background:#2b1515;border-radius:3px;overflow:hidden}
+.au-hp i{display:block;height:100%;background:#4ade80;transition:width .18s}
+.arena-unit.enemy .au-hp i{background:#f87171}
+.au-en{height:3px;background:#1e293b;border-radius:3px;overflow:hidden;margin-top:1px}
+.au-en i{display:block;height:100%;background:#facc15;transition:width .18s}
+.au-sprite{width:36px;height:36px;margin:0 auto;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;border:2px solid #60a5fa;background:#1e293b;box-shadow:0 4px 6px rgba(0,0,0,.6);transition:transform .15s}
+.arena-unit.enemy .au-sprite{border-color:#f87171;background:#3b1414}
+.au-name{font-size:9px;font-weight:900;color:#fff;text-shadow:0 1px 2px #000;white-space:nowrap}
+.au-fx{font-size:9px;font-weight:900;color:#fde047;text-shadow:0 1px 2px #000;min-height:11px}
+.arena-float{position:absolute;font-size:11px;font-weight:900;color:#fff;text-shadow:0 1px 3px #000;pointer-events:none;animation:floatUp .85s ease-out forwards;z-index:6}
+@keyframes floatUp{0%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-26px)}}
+.arena-fx-banner{position:absolute;bottom:6px;left:8px;right:8px;background:rgba(15,9,5,.82);border:1px solid rgba(212,163,74,.45);border-radius:8px;padding:4px 8px;font-size:11px;font-weight:800;color:#ffe6b3;text-align:center;z-index:5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-row{display:grid;grid-template-columns:46px 1fr auto;gap:8px;align-items:center;padding:7px 9px;border-radius:10px;background:rgba(36,22,13,.85);border:1px solid rgba(201,151,62,.25);margin-bottom:5px;font-size:12px}
+.rank-row.me{background:linear-gradient(90deg,rgba(217,155,56,.32),rgba(74,222,128,.16));border-color:#ffd56b}
+.rank-num{font-weight:900;color:#ffd56b;text-align:center;font-size:12px}
+
+.rank-row.rr{grid-template-columns:42px 34px 1fr auto}
+.rank-row.top1{background:linear-gradient(90deg,#7a5a12,#2b1b08);border:2px solid #ffd54a;box-shadow:0 0 14px rgba(255,213,74,.45)}
+.rank-row.top2{background:linear-gradient(90deg,#4b5563,#1f242b);border:2px solid #d1d5db}
+.rank-row.top3{background:linear-gradient(90deg,#7c4a22,#2a1a0e);border:2px solid #d98b4a}
+.av{width:32px;height:32px;border-radius:50% 50% 45% 45%;display:grid;place-items:center;background:radial-gradient(#6b4423,#2b180c);border:2px solid #c9973e;font-size:17px}
+.tag{font-size:9px;font-weight:900;border-radius:6px 2px;padding:1px 5px;margin-left:4px}
+.tag.bot{background:#374151;color:#d1d5db}.tag.real{background:#16a34a;color:#fff}.tag.me{background:#f59e0b;color:#1c1917}
+.arena-unit.hit .au-sprite{filter:brightness(2.2) drop-shadow(0 0 8px #f87171)}
+.ult-fx{position:absolute;inset:0;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;background:radial-gradient(circle,rgba(255,140,0,.5),rgba(0,0,0,.6) 75%);color:#fff;font-weight:900;text-shadow:0 2px 8px #000}
+.hist-row{display:grid;grid-template-columns:36px 1fr auto;gap:8px;align-items:center;padding:8px 10px;margin-bottom:6px;border-radius:14px 4px 14px 4px;background:rgba(36,22,13,.88);border-left:4px solid}
+.hist-row.w{border-color:#4ade80}.hist-row.l{border-color:#f87171}
 </style>
 </head>
 <body>
@@ -1044,6 +1135,21 @@ body.speed100 .brand::after{content:"⏩ 100x";background:#ff6b6b;color:#fff;bor
 <div id="techDetailModal">
   <div class="td-card" id="techDetailCard"></div>
 </div>
+
+<div id="coliseumScreen">
+  <div class="col-top">
+    <button type="button" class="col-back" id="closeColiseumBtn">← Castillo</button>
+    <div class="col-title-wrap">
+      <h1>🏟️ COLISEO IMPERIAL</h1>
+      <small>Liga Clasificatoria · 1,000 Puestos · Duelos 5v5</small>
+    </div>
+    <div class="gem-pill">💎 <b id="colScreenGems">50</b></div>
+  </div>
+  <div class="col-player-banner" id="colPlayerBanner"></div>
+  <div class="col-subnav" id="colSubnav"></div>
+  <div class="col-body" id="colScreenBody"></div>
+</div>
+
 
 <div id="sheetWrap">
   <div class="backdrop" id="backdrop"></div>
@@ -1284,6 +1390,8 @@ function defaultState(){
     qstats:null,
     research:null,
     wallHeroes:[],
+    heroRoster:null,
+    coliseum:null,
     nodeTimer:0,
     clockOffsetMs:0,
     claimedQuests:[],
@@ -1342,6 +1450,8 @@ function migrateState(st, p){
   }
   st.research = p.research || null;
   st.wallHeroes = Array.isArray(p.wallHeroes) ? p.wallHeroes : [];
+  st.heroRoster = p.heroRoster && typeof p.heroRoster === 'object' ? p.heroRoster : null;
+  st.coliseum = p.coliseum && typeof p.coliseum === 'object' ? p.coliseum : null;
   st.bags = {food:{}, wood:{}, stone:{}, gold:{}};
   if(p.bags){
     Object.keys(st.bags).forEach(k => { st.bags[k] = {...(p.bags[k] || {})}; });
@@ -1493,14 +1603,15 @@ function getWallLv(){
 }
 function getWallHeroes(){
   if(!Array.isArray(state.wallHeroes)) state.wallHeroes = [];
-  state.wallHeroes = state.wallHeroes.filter(id => HEROES.some(h => h.id === id));
+  const legacyMap = {valhein_style:'violet', arthur_style:'arthur', nakroth_style:'nakroth', alice_style:'alice', raz_style:'krixi'};
+  state.wallHeroes = state.wallHeroes.map(id => legacyMap[id] || id).filter(id => HEROES.some(h => h.id === id));
   return state.wallHeroes;
 }
 function getWallDefense(){
   const lv = getWallLv();
   let d = lv * 120;
   getWallHeroes().forEach(id => {
-    const h = getHeroById(id);
+    const h = getHeroStats(id);
     d += Math.round((h.atk + h.def) * lv * 0.5 + h.hp * 0.1);
   });
   return d;
@@ -1537,11 +1648,12 @@ function renderWallSheet(){
     <button type="button" class="btn sm" style="margin-bottom:10px" onclick="openSheet('plot', ${idx});combatState.plotSubMode='upgrade';renderHUD()">${busy ? '🏗️ Mejorando la muralla…' : `⬆️ Mejorar Muralla a Nv.${Math.min(MAX_CASTLE_LV, lv + 1)}`}</button>
     <div class="sec" style="margin:0 0 6px;color:var(--mute);font-size:12px;font-weight:800">5 HÉROES DE DISTINTA CLASE · se asigna uno por clase</div>
     ${HEROES.map(h => {
+      const st = getHeroStats(h.id);
       const on = assigned.includes(h.id);
       return `
         <div class="card hero-slot ${on ? 'on' : ''}">
           <div class="hs-ico">${h.ico}</div>
-          <div><b>${h.name}</b> · ${h.role}<small>⚔️ ${h.atk} · 🛡️ ${h.def} · ❤️ ${h.hp}</small></div>
+          <div><b>${h.name}</b> Nv.${st.lv} · ${h.role}<small>⚔️ ${st.atk} · 🛡️ ${st.def} · ❤️ ${st.hp}</small></div>
           <button type="button" class="btn sm ${on ? 'danger' : ''}" style="width:auto;padding:8px 10px" onclick="toggleWallHero('${h.id}')">${on ? 'Quitar' : 'Asignar'}</button>
         </div>`;
     }).join('')}
@@ -1648,21 +1760,23 @@ function isQuestClaimed(q){
   return state.claimedQuests.includes(q.id);
 }
 function getQuestProgress(q){
-  if(q.type === 'res') return [Math.floor(state.res[q.res] || 0), q.amt];
+  const goal = q.amtFn ? q.amtFn() : q.amt;
+  if(q.type === 'res') return [Math.floor(state.res[q.res] || 0), goal];
   if(q.type === 'anyBldLv') return [Math.max(0, ...state.grid.map(c => (c && c.bld) ? (c.lv || 0) : 0)), q.lv];
-  if(q.type === 'troops') return [getTotalTroops(), q.amt];
+  if(q.type === 'troops') return [getTotalTroops(), goal];
   if(q.type === 'castleLv') return [getCastleLv(), q.lv];
-  if(q.type === 'bldCount') return [state.grid.filter(c => c && c.bld && (c.lv || 0) > 0).length, q.amt];
-  if(q.type === 'gather') return [Math.floor(ensureQuestStats().dayGather[q.res] || 0), q.amt];
+  if(q.type === 'bldCount') return [state.grid.filter(c => c && c.bld && (c.lv || 0) > 0).length, goal];
+  if(q.type === 'gather') return [Math.floor(ensureQuestStats().dayGather[q.res] || 0), goal];
   if(q.type === 'train') return [Math.floor(ensureQuestStats().dayTrain[q.cat] || 0), q.amtFn()];
   if(q.type === 'collect' || q.type === 'collectAll'){
     const st = ensureQuestStats();
     const col = q.period === 'weekly' ? st.weekCol : st.dayCol;
-    if(q.type === 'collect') return [Math.floor(col[q.res] || 0), q.amt];
-    return [Math.floor(Math.min(...RES.map(r => col[r.id] || 0))), q.amt];
+    if(q.type === 'collect') return [Math.floor(col[q.res] || 0), goal];
+    return [Math.floor(Math.min(...RES.map(r => col[r.id] || 0))), goal];
   }
   return [0, 1];
 }
+
 function bagsText(bags){
   return (bags || []).map(([rid, sz]) => `${RES.find(r => r.id === rid)?.ico || ''}${fmtNum(sz)}`).join(' ');
 }
@@ -1768,29 +1882,20 @@ function getBuildDuration(bldId, targetLv){
   const techReduction = Math.min(0.45, getResearchPct('log_build') / 100);
   const labReduction = Math.min(0.35, getTechLabLv() * 0.03);
   const totalReduction = Math.min(0.65, techReduction + labReduction);
+  const lateBoost = lv >= 4 ? (1 + (lv - 3) * 0.45) : 1;
 
   if(bldId === 'castle'){
-    const raw = Math.round(25 * Math.pow(1.38, lv - 1));
+    const raw = Math.round(25 * Math.pow(1.48, lv - 1) * lateBoost);
     return Math.max(4, Math.round(raw * (1 - totalReduction)));
   }
-  // Canteras y otros edificios: aumentan progresivamente con cada nivel
   const baseByBld = {
-    quarry: 14,
-    mint: 12,
-    sawmill: 10,
-    farm: 9,
-    storage: 11,
-    barracks_inf: 12,
-    barracks_cav: 13,
-    barracks_art: 13,
-    barracks_siege: 15,
-    warhall: 18,
-    treasury: 18,
-    techlab: 16
+    quarry: 14, mint: 12, sawmill: 10, farm: 9, storage: 11,
+    barracks_inf: 12, barracks_cav: 13, barracks_art: 13, barracks_siege: 15,
+    warhall: 18, treasury: 18, techlab: 16
   };
   const baseSec = baseByBld[bldId] || 8;
-  const raw = Math.round(baseSec * Math.pow(1.28, lv - 1));
-  return Math.max(3, Math.round(raw * (1 - totalReduction)));
+  const raw = Math.round(baseSec * Math.pow(1.36, lv - 1) * lateBoost);
+  return Math.max(4, Math.round(raw * (1 - totalReduction)));
 }
 
 function getSkipGemCost(task){
@@ -1802,8 +1907,7 @@ function getSkipGemCost(task){
 
 function getBuildCost(bldId, targetLv){
   const base = BLD[bldId].cost;
-  // el Castillo crece más suave (x1.32) para que el Nv. 20 sea alcanzable con el tope de almacén
-  const growth = (bldId === 'castle') ? 1.32 : 1.42;
+  const growth = (bldId === 'castle') ? 1.42 : 1.50;
   const mult = Math.pow(growth, Math.max(0, targetLv - 1));
   const out = {};
   Object.keys(base).forEach(k => { out[k] = Math.ceil(base[k] * mult); });
@@ -4440,41 +4544,48 @@ if(_tClose) _tClose.addEventListener('click', closeTechScreen);
 
 
 const HEROES = [
-  {
-    id:'valhein_style', name:'Kaelen', role:'Tirador', troopCat:'artillery', ico:'🏹',
-    atk:46, def:18, hp:420, critChance:0.24,
-    s1:{name:'Disparo Perforante', cd:4, mult:1.45, desc:'Daño a distancia que ignora parte de la defensa.'},
-    s2:{name:'Salva de Precisión', cd:6, mult:1.75, desc:'Alta probabilidad de golpe crítico en el objetivo.'},
-    ult:{name:'Lluvia de Proyectiles', mult:2.55, desc:'Ráfaga masiva desde la retaguardia.'}
-  },
-  {
-    id:'arthur_style', name:'Dorian', role:'Guerrero', troopCat:'infantry', ico:'🛡️',
-    atk:36, def:34, hp:620, critChance:0.12,
-    s1:{name:'Tajo de Vanguardia', cd:4, mult:1.35, desc:'Golpe firme que endurece la guardia del héroe.'},
-    s2:{name:'Muralla Férrea', cd:6, shield:95, desc:'Otorga escudo/defensa y reduce daño entrante.'},
-    ult:{name:'Formación Defensiva', mult:1.95, shield:140, desc:'Golpea el frente y protege la línea.'}
-  },
-  {
-    id:'nakroth_style', name:'Vex', role:'Jungla', troopCat:'cavalry', ico:'🗡️',
-    atk:50, def:20, hp:460, critChance:0.28,
-    s1:{name:'Emboscada Veloz', cd:4, mult:1.6, desc:'Ataque rápido contra objetivos vulnerables.'},
-    s2:{name:'Cuchilla Relámpago', cd:6, mult:1.8, desc:'Golpe ágil con alto daño de embestida.'},
-    ult:{name:'Asalto Nocturno', mult:2.65, desc:'Carga letal contra la línea enemiga.'}
-  },
-  {
-    id:'alice_style', name:'Lyra', role:'Soporte', troopCat:'siege', ico:'✨',
-    atk:28, def:26, hp:520, critChance:0.10,
-    s1:{name:'Pulso Protector', cd:4, heal:75, desc:'Restaura vida y protege aliados/máquinas.'},
-    s2:{name:'Bendición de Asedio', cd:6, heal:90, mult:1.25, desc:'Apoya la recuperación y potencia el asedio.'},
-    ult:{name:'Santuario Real', heal:150, mult:1.6, desc:'Gran curación y escudo para el frente.'}
-  },
-  {
-    id:'raz_style', name:'Zeph', role:'Mago', troopCat:'artillery', ico:'🔮',
-    atk:48, def:17, hp:430, critChance:0.20,
-    s1:{name:'Orbe Arcano', cd:4, mult:1.5, desc:'Descarga mágica que debilita la formación rival.'},
-    s2:{name:'Fractura Mística', cd:6, mult:1.75, desc:'Reduce la defensa enemiga e inflige daño.'},
-    ult:{name:'Explosión Arcana', mult:2.6, desc:'Detonación mágica sobre toda la formación.'}
-  }
+  {id:'violet',name:'Violet',role:'Artillería',troopCat:'artillery',ico:'🏹',color:'#f59e0b',range:260,
+   base:{atk:62,def:22,hp:520,spd:1.18},growth:{atk:11,def:4,hp:78,spd:0.02},
+   passive:{name:'Cadencia Fulminante',desc:'Cada ataque básico acelera su frecuencia de disparo (+6%, hasta 5 acumulaciones).'},
+   s1:{name:'Voltereta Táctica',cd:5,roll:1.9,desc:'Rueda hacia atrás y su siguiente disparo causa +90% de daño.'},
+   s2:{name:'Granada Ralentizante',cd:6.5,mult:1.3,slow:2.5,desc:'Granada que daña y ralentiza al enemigo durante 2.5s.'},
+   ult:{name:'Disparo Explosivo',mult:2.45,aoe:true,desc:'Disparo explosivo de largo alcance que golpea a toda la formación enemiga.'}},
+  {id:'arthur',name:'Arthur',role:'Infantería',troopCat:'infantry',ico:'🛡️',color:'#3b82f6',range:58,
+   base:{atk:46,def:44,hp:860,spd:0.95},growth:{atk:8,def:8,hp:135,spd:0.015},
+   passive:{name:'Temple de Acero',desc:'Recibe -12% de daño (-20% bajo 50% de vida) y gana un escudo al caer bajo 50%.'},
+   s1:{name:'Carga del Caballero',cd:4.5,mult:1.4,charge:true,stun:0.5,shieldPct:0.12,desc:'Carga contra el enemigo, lo aturde 0.5s y se protege con un escudo.'},
+   s2:{name:'Giro de Acero',cd:6.5,mult:1.1,aoeNear:true,slow:1.8,desc:'Ataque giratorio que daña y ralentiza a todos los enemigos cercanos.'},
+   ult:{name:'Golpe del Rey',mult:2.15,aoe:true,stun:1.2,desc:'Golpe de impacto en área que aturde a los enemigos 1.2s.'}},
+  {id:'nakroth',name:'Nakroth',role:'Caballería',troopCat:'cavalry',ico:'🗡️',color:'#a855f7',range:62,
+   base:{atk:68,def:24,hp:580,spd:1.35},growth:{atk:12,def:4,hp:86,spd:0.025},
+   passive:{name:'Filo Encadenado',desc:'Atacar seguido al mismo objetivo suma +7% de daño por golpe (hasta 5).'},
+   s1:{name:'Embestida Relámpago',cd:4,mult:1.6,targetBack:true,desc:'Se lanza contra el enemigo de la retaguardia.'},
+   s2:{name:'Sombra Evasiva',cd:7,mult:1.7,dodge:1.0,desc:'Esquiva todo el daño 1s y contraataca con un golpe crítico.'},
+   ult:{name:'Danza de Cuchillas',mult:2.7,hits:5,stun:0.6,desc:'Serie de 5 ataques consecutivos sobre un objetivo.'}},
+  {id:'alice',name:'Alice',role:'Apoyo',troopCat:'siege',ico:'✨',color:'#10b981',range:235,
+   base:{atk:38,def:32,hp:660,spd:1.05},growth:{atk:7,def:6,hp:105,spd:0.018},
+   passive:{name:'Pasos Astrales',desc:'Se mueve un 25% más rápido.'},
+   s1:{name:'Orbe Aturdidor',cd:5,mult:0.9,stun:1.2,interrupt:true,desc:'Aturde 1.2s al objetivo e interrumpe su energía y habilidades.'},
+   s2:{name:'Barrera Estelar',cd:6.5,teamShield:true,shieldPct:0.14,desc:'Escudo protector para todo el escuadrón aliado.'},
+   ult:{name:'Zona de Eclipse',zone:true,mult:0.8,slow:4,weak:4,desc:'Zona que ralentiza y debilita (-20% daño) a los enemigos 4s.'}},
+  {id:'krixi',name:'Krixi',role:'Magia',troopCat:'artillery',ico:'🔮',color:'#ec4899',range:250,
+   base:{atk:65,def:20,hp:540,spd:1.12},growth:{atk:12,def:4,hp:80,spd:0.02},
+   passive:{name:'Resonancia Feérica',desc:'Cada habilidad lanzada aumenta su poder mágico +8% (máx. +40%).'},
+   s1:{name:'Orbe Mágico',cd:4.5,mult:1.55,desc:'Proyectil mágico de gran daño.'},
+   s2:{name:'Vórtice Elevador',cd:6.5,mult:1.45,stun:1.3,lift:true,desc:'Levanta al enemigo y lo controla 1.3s.'},
+   ult:{name:'Lluvia de Meteoritos',mult:2.5,aoe:true,desc:'Meteoritos en área que golpean a todos los rivales.'}}
+];
+
+const COLISEUM_DAILY_REWARDS = [
+  {min:1,max:1,gems:500,label:'Puesto 1 · Campeón del Coliseo'},
+  {min:2,max:2,gems:400,label:'Puesto 2'},
+  {min:3,max:3,gems:300,label:'Puesto 3'},
+  {min:4,max:10,gems:200,label:'Puestos 4 – 10'},
+  {min:11,max:50,gems:100,label:'Puestos 11 – 50'},
+  {min:51,max:100,gems:75,label:'Puestos 51 – 100'},
+  {min:101,max:250,gems:50,label:'Puestos 101 – 250'},
+  {min:251,max:500,gems:25,label:'Puestos 251 – 500'},
+  {min:501,max:1000,gems:10,label:'Puestos 501 – 1000'}
 ];
 
 const PVP_TARGETS = [
@@ -4484,182 +4595,1042 @@ const PVP_TARGETS = [
 ];
 
 let combatState = {
-  tab: 'hero_arena', // 'hero_arena' | 'pvp_siege'
-  selectedHeroId: 'valhein_style',
-  arena: null,
+  tab: 'coliseum',
+  selectedHeroId: 'violet',
   pvp: null
 };
 
-function ensureHeroState(){
-  if(!state.heroes){
-    state.heroes = {unlocked:['valhein_style','arthur_style','nakroth_style','alice_style','raz_style'], assigned:{infantry:'arthur_style', cavalry:'nakroth_style', artillery:'valhein_style', siege:'alice_style'}};
-  }
+let coliseumUI = {
+  open: false,
+  tab: 'squad', // 'squad' | 'rivals' | 'arena' | 'ranking' | 'rewards' | 'history'
+  searchQuery: '',
+  selectedHistoryId: null,
+  battle: null
+};
+
+function todayKeyStr(){
+  const d = new Date(gameNow());
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
 function getHeroById(id){
-  return HEROES.find(h => h.id === id) || HEROES[0];
+  const legacyMap = {valhein_style:'violet', arthur_style:'arthur', nakroth_style:'nakroth', alice_style:'alice', raz_style:'krixi'};
+  const cleanId = legacyMap[id] || id;
+  return HEROES.find(h => h.id === cleanId) || HEROES[0];
+}
+
+function ensureHeroState(){
+  if(!state.heroRoster || typeof state.heroRoster !== 'object') state.heroRoster = {};
+  HEROES.forEach(h => {
+    if(!state.heroRoster[h.id]){
+      state.heroRoster[h.id] = {lv:1, xp:0};
+    }else{
+      state.heroRoster[h.id].lv = Math.max(1, Number(state.heroRoster[h.id].lv) || 1);
+      state.heroRoster[h.id].xp = Math.max(0, Number(state.heroRoster[h.id].xp) || 0);
+    }
+  });
+  if(!state.heroes){
+    state.heroes = {
+      unlocked: HEROES.map(h => h.id),
+      assigned: {infantry:'arthur', cavalry:'nakroth', artillery:'violet', siege:'alice'}
+    };
+  }
+}
+
+function getHeroXpNeeded(lv){
+  return 60 + (lv - 1) * 45;
+}
+
+function getHeroStats(heroId, customLv = null){
+  ensureHeroState();
+  const h = getHeroById(heroId);
+  const prog = state.heroRoster[h.id] || {lv:1, xp:0};
+  const lv = customLv != null ? Math.max(1, customLv) : prog.lv;
+  const multLv = lv - 1;
+  return {
+    ...h,
+    lv,
+    xp: prog.xp,
+    xpNext: getHeroXpNeeded(lv),
+    atk: Math.round(h.base.atk + h.growth.atk * multLv),
+    def: Math.round(h.base.def + h.growth.def * multLv),
+    hp: Math.round(h.base.hp + h.growth.hp * multLv),
+    spd: Number((h.base.spd + h.growth.spd * multLv).toFixed(2))
+  };
+}
+
+function grantHeroXp(heroId, amount){
+  ensureHeroState();
+  const prog = state.heroRoster[heroId];
+  if(!prog) return false;
+  prog.xp += amount;
+  let leveled = false;
+  while(prog.xp >= getHeroXpNeeded(prog.lv) && prog.lv < 60){
+    prog.xp -= getHeroXpNeeded(prog.lv);
+    prog.lv++;
+    leveled = true;
+  }
+  return leveled;
+}
+
+function trainHeroWithBook(heroId){
+  ensureHeroState();
+  if((state.combatBooks || 0) <= 0){
+    toast('⚠️ Necesitas 📕 Libros de Combate para entrenar');
+    return;
+  }
+  state.combatBooks--;
+  const h = getHeroById(heroId);
+  const up = grantHeroXp(heroId, 45);
+  saveState();
+  toast(up ? `🎉 ¡${h.name} subió a Nv.${state.heroRoster[heroId].lv}!` : `📕 ${h.name} ganó +45 XP`);
+  if(coliseumUI.open) renderColiseumScreen();
+  renderHUD();
+}
+
+function getColiseumUnlockedSlots(castleLv = getCastleLv()){
+  if(castleLv >= 20) return 5;
+  if(castleLv >= 15) return 4;
+  if(castleLv >= 10) return 3;
+  if(castleLv >= 5) return 2;
+  return 1;
+}
+
+function getSlotRequiredCastleLv(slotIdx){
+  return [1, 5, 10, 15, 20][slotIdx] || 20;
+}
+
+function buildColiseumBots(){
+  const prefixes = ['Sir','Lord','Duque','Barón','Conde','Capitán','Maestre','Guardia','Paladín','Comandante','Vanguardia','Caballero','Centinela','Heraldo','Templario'];
+  const names = ['Aldric','Gideon','Rowan','Vaelen','Thorne','Cassian','Draven','Beric','Caelum','Orin','Garrick','Lucian','Soren','Kael','Roderick','Tarian','Magnus','Cedric','Valen','Darian','Corvus','Alaric','Bram','Gawain','Tristan'];
+  const bots = [];
+  for(let rank = 1; rank <= 999; rank++){
+    const tier = Math.max(0, Math.floor((1000 - rank) / 100)); // 0..9
+    const squadSize = rank <= 60 ? 5 : rank <= 220 ? 4 : rank <= 500 ? 3 : rank <= 820 ? 2 : 1;
+    const heroLv = Math.max(1, Math.min(45, Math.round(1 + ((1000 - rank) / 1000) * 34)));
+    const pool = [...HEROES];
+    // determinista pero variado por puesto
+    const rot = rank % pool.length;
+    const rotated = pool.slice(rot).concat(pool.slice(0, rot));
+    const squad = rotated.slice(0, squadSize).map(h => h.id);
+    const pName = `${prefixes[(rank * 7) % prefixes.length]} ${names[(rank * 13) % names.length]} #${rank}`;
+    const score = 1000 + (1000 - rank) * 3;
+    bots.push({
+      id: `bot_${rank}`,
+      isBot: true,
+      name: pName,
+      rank,
+      score,
+      heroLv,
+      squad
+    });
+  }
+  return bots;
+}
+
+function ensureColiseumState(){
+  ensureHeroState();
+  const today = todayKeyStr();
+  if(!state.coliseum || typeof state.coliseum !== 'object'){
+    state.coliseum = {
+      playerName: 'Comandante Mike',
+      rank: 1000,
+      score: 1000,
+      squad: [null, null, null, null, null], // Empieza completamente vacío
+      dailyAttemptsLeft: 5,
+      dailyDate: today,
+      dailyRewardClaimedDate: '',
+      bots: buildColiseumBots(),
+      rivals: [],
+      history: []
+    };
+  }
+  const col = state.coliseum;
+  if(!Array.isArray(col.squad) || col.squad.length !== 5){
+    const prev = Array.isArray(col.squad) ? col.squad : [];
+    col.squad = [prev[0]||null, prev[1]||null, prev[2]||null, prev[3]||null, prev[4]||null];
+  }
+  if(!Array.isArray(col.bots) || col.bots.length < 999){
+    col.bots = buildColiseumBots();
+  }
+  if(!Array.isArray(col.pending)) col.pending = [];
+  if(col.dailyDate !== today){
+    if(col.dailyDate && !col.pending.some(x => x.day === col.dailyDate)) col.pending.push({day:col.dailyDate, rank:col.rank, gems:getDailyRewardForRank(col.rank).gems});
+    col.pending = col.pending.slice(-7);
+    col.dailyDate = today;
+    col.dailyAttemptsLeft = 5;
+  }
+  if(!Array.isArray(col.history)) col.history = [];
+  if(!Array.isArray(col.rivals) || col.rivals.length === 0){
+    refreshColiseumRivals(true);
+  }
+  return col;
+}
+
+function getActiveColiseumSquad(){
+  const col = ensureColiseumState();
+  const unlocked = getColiseumUnlockedSlots();
+  const active = [];
+  for(let i = 0; i < unlocked; i++){
+    if(col.squad[i]) active.push(col.squad[i]);
+  }
+  return active;
+}
+
+function toggleColiseumSquadHero(heroId){
+  const col = ensureColiseumState();
+  const unlocked = getColiseumUnlockedSlots();
+  const existingIdx = col.squad.indexOf(heroId);
+  const h = getHeroById(heroId);
+
+  if(existingIdx >= 0){
+    col.squad[existingIdx] = null;
+    saveState();
+    toast(`${h.ico} ${h.name} retirado del escuadrón`);
+    renderColiseumScreen();
+    return;
+  }
+
+  let freeSlot = -1;
+  for(let i = 0; i < unlocked; i++){
+    if(!col.squad[i]){ freeSlot = i; break; }
+  }
+  if(freeSlot === -1){
+    toast(`🔒 Máximo ${unlocked} espacio(s) desbloqueados (Castillo Nv.${getCastleLv()})`);
+    return;
+  }
+  col.squad[freeSlot] = heroId;
+  saveState();
+  toast(`✅ ${h.ico} ${h.name} asignado al Espacio ${freeSlot + 1}`);
+  renderColiseumScreen();
+}
+
+function moveColiseumSlot(slotIdx, dir){
+  const col = ensureColiseumState();
+  const unlocked = getColiseumUnlockedSlots();
+  const target = slotIdx + dir;
+  if(slotIdx < 0 || slotIdx >= unlocked || target < 0 || target >= unlocked) return;
+  const tmp = col.squad[slotIdx];
+  col.squad[slotIdx] = col.squad[target];
+  col.squad[target] = tmp;
+  saveState();
+  renderColiseumScreen();
+}
+
+const BOT_AVATARS = ['🧙','🤺','🏹','🦅','🐺','🦁','🐉','🔥','🛡️','⚔️','🗡️','🦂'];
+function avatarOfEntry(e){ return e.id === 'player' ? '👑' : BOT_AVATARS[(parseInt(String(e.id).slice(4)) * 7) % BOT_AVATARS.length]; }
+function getRankingEntryByRank(rank){
+  const col = ensureColiseumState();
+  if(rank === col.rank){
+    return {
+      id:'player',
+      isBot:false,
+      name: col.playerName || 'Comandante',
+      rank: col.rank,
+      score: col.score,
+      squad: getActiveColiseumSquad()
+    };
+  }
+  const bot = col.bots.find(b => b.rank === rank);
+  if(bot) return bot;
+  return col.bots[col.bots.length - 1];
+}
+
+function refreshColiseumRivals(silent = false){
+  const col = state.coliseum;
+  const myRank = col.rank;
+  if(myRank <= 1){
+    // Puesto 1 puede desafiar a los puestos 2, 3, 4 y 5 para defender su trono
+    col.rivals = [2, 3, 4, 5].filter(r => r <= 1000);
+    if(!silent) toast('🔄 Rivales del Coliseo actualizados');
+    return;
+  }
+  // El primer rival debe estar como máximo 10 puestos por encima del jugador
+  const minRank = Math.max(1, myRank - 10);
+  const candidates = [];
+  for(let r = minRank; r < myRank; r++) candidates.push(r);
+  // Mezclar candidatos cercanos
+  for(let i = candidates.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
+  }
+  const picked = candidates.slice(0, 4).sort((a, b) => a - b);
+  // Garantizar estrictamente que el primero esté <= 10 puestos arriba
+  if(picked.length > 0 && (myRank - picked[0]) > 10){
+    picked[0] = minRank;
+  }
+  for(let r = myRank + 1; picked.length < 4 && r <= 1000; r++) picked.push(r);
+  col.rivals = picked;
+  saveState();
+  if(!silent){
+    toast('🔄 Lista de 4 rivales actualizada');
+    renderColiseumScreen();
+  }
+}
+
+function getDailyRewardForRank(rank){
+  return COLISEUM_DAILY_REWARDS.find(t => rank >= t.min && rank <= t.max) || COLISEUM_DAILY_REWARDS[COLISEUM_DAILY_REWARDS.length - 1];
+}
+
+function claimColiseumDailyReward(){
+  const col = ensureColiseumState();
+  const list = col.pending || [];
+  if(!list.length){ toast('✅ Sin recompensas pendientes. Se entregan al cierre diario (00:00)'); return; }
+  const total = list.reduce((a, x) => a + x.gems, 0);
+  col.pending = [];
+  state.gems = (state.gems || 0) + total;
+  saveState(); renderHUD();
+  toast(`🏆 Recompensa del Coliseo: +${total} 💎`);
+  renderColiseumScreen();
+}
+
+function getColiseumUnitPower(heroId, lv){
+  const st = getHeroStats(heroId, lv);
+  return Math.round(st.atk * 3.2 + st.def * 2.5 + st.hp * 0.45);
+}
+
+function startColiseumBattle(rivalRank){
+  const col = ensureColiseumState();
+  const activeIds = getActiveColiseumSquad();
+  if(activeIds.length === 0){
+    toast('⚠️ Selecciona al menos 1 héroe en tu escuadrón del Coliseo');
+    coliseumUI.tab = 'squad';
+    renderColiseumScreen();
+    return;
+  }
+  const rival = getRankingEntryByRank(rivalRank);
+  if(!rival) return;
+
+  // Nota: Los combates contra bots NO consumen los 5 intentos diarios
+  if(!rival.isBot){
+    if(col.dailyAttemptsLeft <= 0){
+      toast('⏳ Has agotado tus 5 intentos diarios contra jugadores');
+      return;
+    }
+    col.dailyAttemptsLeft--;
+    saveState();
+  }
+
+  const spawnSide = (heroIds, side, customLv = null) => {
+    const count = heroIds.length;
+    return heroIds.map((hid, idx) => {
+      const st = getHeroStats(hid, customLv);
+      const yStep = 100 / (count + 1);
+      return {
+        uid: `${side}_${idx}_${hid}`,
+        side,
+        heroId: st.id,
+        name: st.name,
+        role: st.role,
+        ico: st.ico,
+        color: st.color,
+        lv: st.lv,
+        range: st.range,
+        maxHp: st.hp,
+        hp: st.hp,
+        atk: st.atk,
+        def: st.def,
+        baseSpd: st.spd,
+        energy: 25,
+        shield: 0,
+        stunTimer: 0,
+        slowTimer: 0,
+        rageTimer: 0,
+        magicBonus: 0,
+        basicCount: 0,
+        passiveShieldUsed: false,
+        cd1: 1.4 + idx * 0.35,
+        cd2: 2.8 + idx * 0.4,
+        atkTimer: 0.4 + idx * 0.15,
+        x: side === 'ally' ? 14 : 86,
+        y: Math.round(yStep * (idx + 1)),
+        anim: '',
+        fxText: '',
+        dmgDealt: 0,
+        healingDone: 0,
+        skillsUsed: []
+      };
+    });
+  };
+
+  const allies = spawnSide(activeIds, 'ally', null);
+  const enemies = spawnSide(rival.squad, 'enemy', rival.heroLv || 1);
+
+  coliseumUI.battle = {
+    active: true,
+    finished: false,
+    won: null,
+    elapsed: 0,
+    maxDuration: 60,
+    rivalRank: rival.rank,
+    rivalName: rival.name,
+    rivalIsBot: !!rival.isBot,
+    rivalAvatar: avatarOfEntry(rival),
+    units: [...allies, ...enemies],
+    floats: [],
+    banner: `⚔️ ¡Inicia el duelo contra ${rival.name} (Puesto #${rival.rank})!`,
+    events: [`0.0s · Inicio del combate vs ${rival.name} (#${rival.rank})`],
+    rewardSummary: ''
+  };
+  coliseumUI.tab = 'arena';
+  renderColiseumScreen();
+}
+
+function addBattleFloat(b, x, y, text, color = '#fff'){
+  b.floats.push({id: Math.random(), x, y, text, color, ttl: 0.85});
+  if(b.floats.length > 14) b.floats.shift();
+}
+
+function logColiseumEvent(b, text){
+  const t = `${b.elapsed.toFixed(1)}s · ${text}`;
+  b.banner = text;
+  b.events.unshift(t);
+  if(b.events.length > 40) b.events.pop();
+}
+
+function dealColiseumDamage(b, attacker, target, rawDmg, opts = {}){
+  if(!target || target.hp <= 0) return 0;
+  if(target.dodge > 0){ addBattleFloat(b, target.x, target.y - 4, '💨 Esquiva', '#c4b5fd'); return 0; }
+  if(attacker.weakTimer > 0) rawDmg *= 0.8;
+  const defFactor = opts.ignoreDef ? 0.7 : 1.0;
+  const effDef = target.def * defFactor;
+  const magicMult = 1 + (attacker.magicBonus || 0);
+  let dmg = Math.max(8, Math.round((rawDmg * magicMult) * (100 / (100 + effDef * 1.35))));
+
+  if(target.heroId === 'arthur') dmg = Math.round(dmg * (target.hp <= target.maxHp * 0.5 ? 0.8 : 0.88));
+  target.hitT = 0.3;
+  if(target.shield > 0){
+    const abs = Math.min(target.shield, dmg);
+    target.shield -= abs;
+    dmg -= abs;
+    if(abs > 0) addBattleFloat(b, target.x, target.y - 8, `🛡️-${abs}`, '#93c5fd');
+  }
+  target.hp = Math.max(0, target.hp - dmg);
+  attacker.dmgDealt += dmg;
+  target.energy = Math.min(100, target.energy + 9);
+  if(dmg > 0){
+    addBattleFloat(b, target.x, target.y - 4, `${opts.crit ? '💥' : '-'}${dmg}`, opts.crit ? '#fde047' : '#fca5a5');
+  }
+
+  // Pasiva Arthur: escudo al caer bajo 50% HP
+  if(target.heroId === 'arthur' && !target.passiveShieldUsed && target.hp > 0 && target.hp <= target.maxHp * 0.5){
+    target.passiveShieldUsed = true;
+    const sh = Math.round(target.maxHp * 0.22);
+    target.shield += sh;
+    target.fxText = '🛡️ Voluntad';
+    logColiseumEvent(b, `🛡️ Pasiva de Arthur activada (+${sh} Escudo)`);
+  }
+
+  if(target.hp <= 0){
+    target.fxText = '💀 Caído';
+    logColiseumEvent(b, `💀 ${target.name} (${target.side === 'ally' ? 'Aliado' : 'Rival'}) ha sido derrotado`);
+  }
+  return dmg;
+}
+
+function tickColiseumBattle(dt){
+  const b = coliseumUI.battle;
+  if(!b || !b.active || b.finished) return;
+
+  b.elapsed += dt;
+  b.floats.forEach(f => f.ttl -= dt);
+  if(b.ultFx){ b.ultFx.ttl -= dt; if(b.ultFx.ttl <= 0) b.ultFx = null; }
+  b.floats = b.floats.filter(f => f.ttl > 0);
+
+  const allies = b.units.filter(u => u.side === 'ally' && u.hp > 0);
+  const enemies = b.units.filter(u => u.side === 'enemy' && u.hp > 0);
+
+  if(allies.length === 0 || enemies.length === 0 || b.elapsed >= b.maxDuration){
+    finishColiseumBattle(allies.length > 0 && enemies.length === 0);
+    return;
+  }
+
+  b.units.forEach(u => {
+    if(u.hp <= 0) return;
+    u.cd1 = Math.max(0, u.cd1 - dt);
+    u.cd2 = Math.max(0, u.cd2 - dt);
+    if(u.stunTimer > 0) u.stunTimer = Math.max(0, u.stunTimer - dt);
+    if(u.slowTimer > 0) u.slowTimer = Math.max(0, u.slowTimer - dt);
+    if(u.rageTimer > 0) u.rageTimer = Math.max(0, u.rageTimer - dt);
+    if(u.weakTimer > 0) u.weakTimer = Math.max(0, u.weakTimer - dt);
+    if(u.hitT > 0) u.hitT = Math.max(0, u.hitT - dt);
+    if(u.dodge > 0){
+      u.dodge -= dt; u.fxText = '💨 Esquiva';
+      if(u.dodge <= 0){
+        u.dodge = 0;
+        const ft = b.units.filter(x => x.side !== u.side && x.hp > 0).sort((a, c) => Math.hypot(a.x - u.x, a.y - u.y) - Math.hypot(c.x - u.x, c.y - u.y))[0];
+        if(ft){ dealColiseumDamage(b, u, ft, u.atk * getHeroById(u.heroId).s2.mult, {crit:true}); u.rageTimer = 2; logColiseumEvent(b, `⚡ ${u.name} contraataca tras esquivar`); }
+      }
+      return;
+    }
+
+    if(u.stunTimer > 0){
+      u.fxText = '💫 Aturdido';
+      return;
+    }else if(u.slowTimer > 0){
+      u.fxText = '❄️ Lento';
+    }else if(u.shield > 0){
+      u.fxText = `🛡️ ${u.shield}`;
+    }else if(u.rageTimer > 0){
+      u.fxText = '⚡ Furia';
+    }else{
+      u.fxText = '';
+    }
+
+    const foes = b.units.filter(x => x.side !== u.side && x.hp > 0);
+    const friends = b.units.filter(x => x.side === u.side && x.hp > 0);
+    if(foes.length === 0) return;
+
+    // Elegir objetivo más cercano
+    foes.sort((a, c) => Math.hypot(a.x - u.x, a.y - u.y) - Math.hypot(c.x - u.x, c.y - u.y));
+    const target = foes[0];
+    const distPx = Math.hypot((target.x - u.x) * 3.4, (target.y - u.y) * 2.2);
+
+    // Movimiento hacia rango de ataque
+    if(distPx > u.range * 0.42){
+      const dirX = u.side === 'ally' ? 1 : -1;
+      const moveStep = (u.range < 100 ? 18 : 10) * dt * (u.heroId === 'alice' ? 1.25 : 1) * (u.slowTimer > 0 ? 0.7 : 1);
+      u.x = Math.max(10, Math.min(90, u.x + dirX * moveStep));
+      const dy = target.y - u.y;
+      u.y += Math.sign(dy) * Math.min(Math.abs(dy), 12 * dt);
+      return;
+    }
+
+    const heroCfg = getHeroById(u.heroId);
+
+    // 1. Habilidad Definitiva (100 Energía)
+    if(u.energy >= 100){
+      u.energy = 0;
+      u.anim = 'ulting';
+      setTimeout(() => { u.anim = ''; }, 350);
+      u.skillsUsed.push(heroCfg.ult.name);
+      b.ultFx = {ico:u.ico, name:heroCfg.ult.name, hero:u.name, ttl:1.3};
+      if(u.heroId === 'krixi') u.magicBonus = Math.min(0.4, u.magicBonus + 0.08);
+
+      if(heroCfg.ult.zone){
+        foes.forEach(f => { dealColiseumDamage(b, u, f, u.atk * heroCfg.ult.mult); f.slowTimer = Math.max(f.slowTimer, heroCfg.ult.slow); f.weakTimer = heroCfg.ult.weak; });
+        logColiseumEvent(b, `🌌 ${u.name} abre ${heroCfg.ult.name}: enemigos lentos y debilitados`);
+      }else if(heroCfg.ult.healMult){
+        const healAmt = Math.round(u.atk * heroCfg.ult.healMult);
+        friends.forEach(f => {
+          f.hp = Math.min(f.maxHp, f.hp + healAmt);
+          f.shield += Math.round(f.maxHp * (heroCfg.ult.shieldPct || 0.15));
+          u.healingDone += healAmt;
+          addBattleFloat(b, f.x, f.y - 6, `+${healAmt}💚`, '#4ade80');
+        });
+        logColiseumEvent(b, `🌟 ${u.name} usa DEF: ${heroCfg.ult.name} (Cura + Escudo grupal)`);
+      }else if(heroCfg.ult.aoe){
+        foes.forEach(f => { dealColiseumDamage(b, u, f, u.atk * heroCfg.ult.mult, {crit:true}); if(heroCfg.ult.stun) f.stunTimer = Math.max(f.stunTimer, heroCfg.ult.stun); });
+        logColiseumEvent(b, `🌟 ${u.name} desata DEF en área: ${heroCfg.ult.name}`);
+      }else{
+        const hits = heroCfg.ult.hits || 1;
+        for(let i = 0; i < hits; i++) dealColiseumDamage(b, u, target, u.atk * heroCfg.ult.mult / hits, {crit:true});
+        if(heroCfg.ult.stun) target.stunTimer = Math.max(target.stunTimer, heroCfg.ult.stun);
+        logColiseumEvent(b, `🌟 ${u.name} ejecuta DEF: ${heroCfg.ult.name} sobre ${target.name}`);
+      }
+      return;
+    }
+
+    // 2. Habilidad Normal 2
+    if(u.cd2 <= 0){
+      u.cd2 = heroCfg.s2.cd;
+      u.energy = Math.min(100, u.energy + 22);
+      u.anim = 'acting';
+      setTimeout(() => { u.anim = ''; }, 240);
+      u.skillsUsed.push(heroCfg.s2.name);
+      if(u.heroId === 'krixi') u.magicBonus = Math.min(0.4, u.magicBonus + 0.08);
+
+      if(heroCfg.s2.teamShield){
+        friends.forEach(f => {
+          const sh = Math.round(f.maxHp * (heroCfg.s2.shieldPct || 0.14));
+          f.shield += sh;
+          addBattleFloat(b, f.x, f.y - 6, `+${sh}🛡️`, '#60a5fa');
+        });
+      }
+      if(heroCfg.s2.dodge){ u.dodge = heroCfg.s2.dodge; }
+      else if(heroCfg.s2.aoeNear){
+        foes.filter(f => Math.hypot((f.x - u.x) * 3.4, (f.y - u.y) * 2.2) < 95).forEach(f => { dealColiseumDamage(b, u, f, u.atk * heroCfg.s2.mult); if(heroCfg.s2.slow) f.slowTimer = Math.max(f.slowTimer, heroCfg.s2.slow); });
+      }else if(heroCfg.s2.mult){
+        dealColiseumDamage(b, u, target, u.atk * heroCfg.s2.mult);
+      }
+      if(heroCfg.s2.lift) addBattleFloat(b, target.x, target.y - 10, '⬆️', '#f9a8d4');
+      if(heroCfg.s2.slow) target.slowTimer = Math.max(target.slowTimer, heroCfg.s2.slow);
+      if(heroCfg.s2.stun) target.stunTimer = Math.max(target.stunTimer, heroCfg.s2.stun);
+      logColiseumEvent(b, `✨ ${u.name} lanza ${heroCfg.s2.name}`);
+      return;
+    }
+
+    // 3. Habilidad Normal 1
+    if(u.cd1 <= 0){
+      u.cd1 = heroCfg.s1.cd;
+      u.energy = Math.min(100, u.energy + 18);
+      u.anim = 'acting';
+      setTimeout(() => { u.anim = ''; }, 240);
+      u.skillsUsed.push(heroCfg.s1.name);
+      if(u.heroId === 'krixi') u.magicBonus = Math.min(0.4, u.magicBonus + 0.08);
+
+      if(heroCfg.s1.roll){
+        u.nextShot = heroCfg.s1.roll;
+        u.x = Math.max(10, Math.min(90, u.x + (u.side === 'ally' ? -9 : 9)));
+        logColiseumEvent(b, `🌀 ${u.name} rueda y potencia su siguiente disparo`);
+      }else if(heroCfg.s1.healMult){
+        const lowest = [...friends].sort((a, c) => (a.hp/a.maxHp) - (c.hp/c.maxHp))[0];
+        const healAmt = Math.round(u.atk * heroCfg.s1.healMult);
+        lowest.hp = Math.min(lowest.maxHp, lowest.hp + healAmt);
+        u.healingDone += healAmt;
+        addBattleFloat(b, lowest.x, lowest.y - 6, `+${healAmt}💚`, '#4ade80');
+        logColiseumEvent(b, `💚 ${u.name} cura a ${lowest.name} (+${healAmt} HP)`);
+      }else if(heroCfg.s1.aoe){
+        foes.forEach(f => dealColiseumDamage(b, u, f, u.atk * heroCfg.s1.mult));
+        logColiseumEvent(b, `🔮 ${u.name} lanza ${heroCfg.s1.name} en área`);
+      }else{
+        const chosen = heroCfg.s1.targetBack ? foes[foes.length - 1] : target;
+        if(heroCfg.s1.charge){ u.x = chosen.x + (u.side === 'ally' ? -5 : 5); u.y = chosen.y; }
+        dealColiseumDamage(b, u, chosen, u.atk * heroCfg.s1.mult);
+        if(heroCfg.s1.stun) chosen.stunTimer = Math.max(chosen.stunTimer, heroCfg.s1.stun);
+        if(heroCfg.s1.interrupt){ chosen.cd1 += 1.5; chosen.cd2 += 1.5; chosen.energy = Math.max(0, chosen.energy - 20); }
+        if(heroCfg.s1.shieldPct){
+          u.shield += Math.round(u.maxHp * heroCfg.s1.shieldPct);
+        }
+        logColiseumEvent(b, `⚔️ ${u.name} usa ${heroCfg.s1.name} contra ${chosen.name}`);
+      }
+      return;
+    }
+
+    // 4. Ataque Básico
+    const spdMult = (u.slowTimer > 0 ? 0.65 : 1) * (u.rageTimer > 0 ? 1.25 : 1);
+    const interval = Math.max(0.45, 1.35 / (u.baseSpd * spdMult * (1 + 0.06 * (u.stacks || 0))));
+    u.atkTimer -= dt;
+    if(u.atkTimer <= 0){
+      u.atkTimer = interval;
+      u.basicCount++;
+      u.energy = Math.min(100, u.energy + 14);
+      u.anim = 'acting';
+      setTimeout(() => { u.anim = ''; }, 160);
+
+      const isCrit = Math.random() < (u.heroId === 'nakroth' || u.heroId === 'violet' ? 0.28 : 0.14);
+      if(isCrit && u.heroId === 'nakroth') u.rageTimer = 2.0;
+
+      let mult = isCrit ? 1.5 : 1.0;
+      if(u.nextShot){ mult *= u.nextShot; u.nextShot = 0; }
+      if(u.heroId === 'nakroth'){ if(u.lastT === target.uid) u.combo = Math.min(5, (u.combo || 0) + 1); else { u.lastT = target.uid; u.combo = 0; } mult *= 1 + 0.07 * u.combo; }
+      if(u.heroId === 'violet') u.stacks = Math.min(5, (u.stacks || 0) + 1);
+      dealColiseumDamage(b, u, target, u.atk * mult, {crit: isCrit});
+    }
+  });
+}
+
+function finishColiseumBattle(playerWon){
+  const b = coliseumUI.battle;
+  if(!b || b.finished) return;
+  b.active = false;
+  b.finished = true;
+  b.won = !!playerWon;
+
+  const col = ensureColiseumState();
+  const prevRank = col.rank;
+  let newRank = prevRank;
+  let rewardText = '';
+
+  if(playerWon){
+    // Actualizar puesto si el rival estaba por encima
+    if(b.rivalRank < prevRank){
+      const displacedBot = col.bots.find(bot => bot.rank === b.rivalRank);
+      if(displacedBot) displacedBot.rank = prevRank;
+      col.rank = b.rivalRank;
+      newRank = col.rank;
+    }
+    col.score += 25;
+    state.gems = (state.gems || 0) + 12;
+    state.combatBooks = (state.combatBooks || 0) + 1;
+
+    // Otorgar XP a los héroes participantes
+    const allies = b.units.filter(u => u.side === 'ally');
+    allies.forEach(a => grantHeroXp(a.heroId, 30));
+
+    rewardText = `+12 💎 · +1 📕 Libro · +30 XP/héroe${newRank < prevRank ? ` · ¡Ascendiste al Puesto #${newRank}!` : ''}`;
+    refreshColiseumRivals(true);
+  }else{
+    col.score = Math.max(800, col.score - 8);
+    const allies = b.units.filter(u => u.side === 'ally');
+    allies.forEach(a => grantHeroXp(a.heroId, 10));
+    rewardText = `Sin cambio de puesto (#${prevRank}) · +10 XP de entrenamiento`;
+  }
+
+  b.rewardSummary = rewardText;
+  logColiseumEvent(b, playerWon ? `🏆 ¡VICTORIA! ${rewardText}` : `💀 DERROTA. ${rewardText}`);
+
+  const report = {
+    id: `rep_${Date.now()}`,
+    date: new Date(gameNow()).toLocaleString([], {day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit'}),
+    rivalAvatar: b.rivalAvatar, rivalIsBot: b.rivalIsBot,
+    won: !!playerWon,
+    rivalName: b.rivalName,
+    rivalRank: b.rivalRank,
+    prevRank,
+    newRank,
+    duration: b.elapsed.toFixed(1),
+    rewardSummary: rewardText,
+    allies: b.units.filter(u => u.side === 'ally').map(u => ({
+      name: u.name, ico: u.ico, role: u.role, lv: u.lv,
+      hpLeft: u.hp, maxHp: u.maxHp, dmgDealt: u.dmgDealt,
+      healingDone: u.healingDone, skillsUsed: u.skillsUsed.length
+    })),
+    enemies: b.units.filter(u => u.side === 'enemy').map(u => ({
+      name: u.name, ico: u.ico, role: u.role, lv: u.lv,
+      hpLeft: u.hp, maxHp: u.maxHp, dmgDealt: u.dmgDealt,
+      skillsUsed: u.skillsUsed.length
+    })),
+    events: b.events.slice(0, 30)
+  };
+  col.history.unshift(report);
+  if(col.history.length > 30) col.history.pop();
+  coliseumUI.selectedHistoryId = report.id;
+
+  saveState();
+  renderHUD();
+  renderColiseumScreen();
+}
+
+function openColiseumScreen(initialTab = null){
+  ensureColiseumState();
+  closeSheet();
+  if(initialTab) coliseumUI.tab = initialTab;
+  coliseumUI.open = true;
+  const el = $('#coliseumScreen');
+  if(el) el.classList.add('open');
+  renderColiseumScreen();
+}
+
+function closeColiseumScreen(){
+  coliseumUI.open = false;
+  const el = $('#coliseumScreen');
+  if(el) el.classList.remove('open');
+  renderHUD();
+}
+
+function renderColiseumScreen(){
+  if(!coliseumUI.open) return;
+  const col = ensureColiseumState();
+  const cLv = getCastleLv();
+  const unlockedSlots = getColiseumUnlockedSlots(cLv);
+  const activeSquad = getActiveColiseumSquad();
+  const today = todayKeyStr();
+  const rewardTier = getDailyRewardForRank(col.rank);
+  const canClaimDaily = (col.pending || []).length > 0;
+  const pendTotal = (col.pending || []).reduce((a, x) => a + x.gems, 0);
+
+  const gemsEl = $('#colScreenGems');
+  if(gemsEl) gemsEl.textContent = fmtNum(state.gems || 0);
+
+  const bannerEl = $('#colPlayerBanner');
+  if(bannerEl){
+    bannerEl.innerHTML = `
+      <div>
+        <div style="font-weight:900;font-size:13.5px;color:#fff4dc">👑 ${col.playerName} · Castillo Nv.${cLv}</div>
+        <div class="col-stats-pills">
+          <span class="col-pill">Puesto: <b>#${col.rank}</b>/1000</span>
+          <span class="col-pill">Puntos: <b>${col.score}</b></span>
+          <span class="col-pill">Intentos: <b>${col.dailyAttemptsLeft}/5</b></span>
+          <span class="col-pill">Espacios: <b>${activeSquad.length}/${unlockedSlots}</b></span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <button type="button" class="col-btn" style="padding:6px 8px;font-size:11px" onclick="coliseumUI.tab='rivals';renderColiseumScreen()">⚔️ Desafiar</button>
+        <button type="button" class="col-btn sec" style="padding:5px 8px;font-size:10.5px" onclick="coliseumUI.tab='ranking';renderColiseumScreen()">🏅 Clasificación</button>
+        <button type="button" class="col-btn sec" style="padding:5px 8px;font-size:10.5px" onclick="coliseumUI.tab='rewards';renderColiseumScreen()">${canClaimDaily ? '🎁 +'+pendTotal+'💎' : '🏆 Premios'}</button>
+      </div>
+    `;
+  }
+
+  const navEl = $('#colSubnav');
+  if(navEl){
+    const tabs = [
+      {id:'squad', label:'🛡️ Escuadrón'},
+      {id:'rivals', label:'⚔️ Rivales'},
+      {id:'arena', label:'🏟️ Arena', badge: coliseumUI.battle?.active ? 'VIVO' : ''},
+      {id:'ranking', label:'🏅 Top 1000'}
+    ];
+    navEl.innerHTML = tabs.map(t => `
+      <button type="button" class="col-tab-btn ${coliseumUI.tab === t.id ? 'active' : ''}" onclick="coliseumUI.tab='${t.id}';renderColiseumScreen()">
+        ${t.label}
+        ${t.badge ? `<span class="col-badge">${t.badge}</span>` : ''}
+      </button>
+    `).join('');
+  }
+
+  const body = $('#colScreenBody');
+  if(!body) return;
+
+  if(coliseumUI.tab === 'squad'){
+    body.innerHTML = `
+      <div class="col-sec-title">
+        <span>Formación del Coliseo (${activeSquad.length}/${unlockedSlots} activos)</span>
+        <span style="font-size:11px;color:#e0c39a">📕 Libros: <b>${state.combatBooks || 0}</b></span>
+      </div>
+      <div class="squad-slots-row">
+        ${[0,1,2,3,4].map(idx => {
+          const isUnlocked = idx < unlockedSlots;
+          const reqLv = getSlotRequiredCastleLv(idx);
+          const hid = col.squad[idx];
+          if(!isUnlocked){
+            return `<div class="sq-slot locked" onclick="toast('🔒 Requiere Castillo Nv.${reqLv} para desbloquear este espacio')">
+              <span class="slot-num">#${idx+1}</span>
+              <span class="slot-ico">🔒</span>
+              <span class="slot-nm">Castillo</span>
+              <span class="slot-lv">Nv.${reqLv}</span>
+            </div>`;
+          }
+          if(!hid){
+            return `<div class="sq-slot" onclick="coliseumUI.editing=true;renderColiseumScreen()">
+              <span class="slot-num">#${idx+1}</span>
+              <span class="slot-ico">➕</span>
+              <span class="slot-nm">Vacío</span>
+              <span class="slot-lv">Disponible</span>
+            </div>`;
+          }
+          const st = getHeroStats(hid);
+          return `<div class="sq-slot filled">
+            <span class="slot-num">#${idx+1}</span>
+            <span class="slot-ico">${st.ico}</span>
+            <span class="slot-nm">${st.name}</span>
+            <span class="slot-lv">Nv.${st.lv}</span>
+            <div style="display:flex;gap:3px;margin-top:3px">
+              ${idx > 0 ? `<button type="button" style="background:#2b180c;border:1px solid #c9973e;color:#fff;border-radius:4px;font-size:9px;padding:1px 4px" onclick="moveColiseumSlot(${idx},-1)">◀</button>` : ''}
+              <button type="button" style="background:#7f1d1d;border:1px solid #fca5a5;color:#fff;border-radius:4px;font-size:9px;padding:1px 4px" onclick="toggleColiseumSquadHero('${hid}')">✕</button>
+              ${idx < unlockedSlots - 1 ? `<button type="button" style="background:#2b180c;border:1px solid #c9973e;color:#fff;border-radius:4px;font-size:9px;padding:1px 4px" onclick="moveColiseumSlot(${idx},1)">▶</button>` : ''}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div style="display:flex;gap:6px;margin-bottom:10px">
+        <button type="button" class="col-btn sec" style="flex:1;font-size:11px" onclick="coliseumUI.tab='rewards';renderColiseumScreen()">🎁 Recompensas Diarias</button>
+        <button type="button" class="col-btn sec" style="flex:1;font-size:11px" onclick="coliseumUI.tab='history';renderColiseumScreen()">📜 Historial (${col.history.length})</button>
+      </div>
+
+      <div style="margin:8px 0"><button type="button" class="col-btn" style="width:100%;font-size:13px" onclick="coliseumUI.editing=!coliseumUI.editing;renderColiseumScreen()">${coliseumUI.editing ? '✅ LISTO' : '✏️ EDITAR ESCUADRÓN'}</button></div>
+      ${!coliseumUI.editing ? '' : `<div class="col-sec-title"><span>Elige tus héroes (sin repetir)</span></div>
+      <div class="hero-roster-grid">
+        ${HEROES.map(h => {
+          const st = getHeroStats(h.id);
+          const inSq = col.squad.slice(0, unlockedSlots).includes(h.id);
+          const reserved = !inSq && col.squad.includes(h.id);
+          return `
+            <div class="hero-card-v4 ${inSq ? 'in-squad' : ''}">
+              <div class="hc-top">
+                <div class="hc-portrait" style="background:${h.color}33">${h.ico}</div>
+                <div>
+                  <div style="font-weight:900;font-size:13.5px;color:#fff2d6">${h.name} <span style="color:#ffd166;font-size:11.5px">Nv.${st.lv}</span></div>
+                  <div style="font-size:11px;color:#d6bea0">${h.role} · XP: ${st.xp}/${st.xpNext}</div>
+                  ${reserved ? `<div style="font-size:10px;color:#fca5a5">Guardado en espacio bloqueado</div>` : ''}
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <button type="button" class="col-btn ${inSq ? 'danger' : ''}" style="padding:5px 9px;font-size:11px" onclick="toggleColiseumSquadHero('${h.id}')">
+                    ${inSq ? 'Quitar' : 'Elegir'}
+                  </button>
+                  <button type="button" class="col-btn sec" style="padding:4px 7px;font-size:10px" onclick="trainHeroWithBook('${h.id}')">
+                    📕 +XP
+                  </button>
+                </div>
+              </div>
+              <div class="hc-stats">
+                <span>ATK<b>${st.atk}</b></span>
+                <span>DEF<b>${st.def}</b></span>
+                <span>HP<b>${st.hp}</b></span>
+                <span>VEL<b>${st.spd}</b></span>
+              </div>
+              <div class="hc-skills">
+                <div class="hc-sk-pill"><b>Pasiva · ${h.passive.name}</b>${h.passive.desc}</div>
+                <div class="hc-sk-pill"><b>H1 · ${h.s1.name}</b>${h.s1.desc}</div>
+                <div class="hc-sk-pill"><b>H2 · ${h.s2.name}</b>${h.s2.desc}</div>
+                <div class="hc-sk-pill"><b>DEF · ${h.ult.name}</b>${h.ult.desc}</div>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>`}
+    `;
+  }else if(coliseumUI.tab === 'rivals'){
+    const rivals = col.rivals.map(r => getRankingEntryByRank(r)).filter(Boolean);
+    body.innerHTML = `
+      <div class="col-sec-title">
+        <span>Rivales Disponibles (Máx. 10 puestos arriba)</span>
+        <button type="button" class="col-btn sec" style="padding:4px 8px;font-size:11px" onclick="refreshColiseumRivals(false)">🔄 Actualizar</button>
+      </div>
+      <div class="col-card" style="font-size:11.5px;color:#ebd8bd">
+        Tu puesto actual es <b>#${col.rank}</b>. Los duelos contra bots de la liga <b>no consumen</b> tus 5 intentos diarios y te permiten escalar posiciones al vencerlos.
+      </div>
+      ${rivals.map(rv => {
+        const totalPow = rv.squad.reduce((acc, hid) => acc + getColiseumUnitPower(hid, rv.heroLv || 1), 0);
+        return `
+          <div class="rival-card">
+            <div class="rival-head">
+              <div>
+                <span class="av" style="display:inline-grid;vertical-align:middle">${avatarOfEntry(rv)}</span> <span class="rival-rank-badge">Puesto #${rv.rank}</span>
+                <b style="margin-left:6px;font-size:13px;color:#fff3d6">${rv.name}</b><span class="tag ${rv.isBot ? 'bot' : 'real'}">${rv.isBot ? 'BOT' : 'JUGADOR'}</span>
+              </div>
+              <span style="font-size:11px;color:#ffd56b;font-weight:900">⚡ ${fmtNum(totalPow)}</span>
+            </div>
+            <div style="font-size:11px;color:#d6bea0">Nivel del escuadrón: <b>Nv.${rv.heroLv || 1}</b> · Héroes: <b>${rv.squad.length}</b></div>
+            <div class="rival-team-row">
+              ${rv.squad.map(hid => {
+                const h = getHeroById(hid);
+                return `<span class="rival-mini-hero">${h.ico} ${h.name} Nv.${rv.heroLv || 1}</span>`;
+              }).join('')}
+            </div>
+            <button type="button" class="col-btn" onclick="startColiseumBattle(${rv.rank})">⚔️ DESAFIAR ${rv.isBot ? '· gratis (bot)' : '· consume 1 intento'}</button>
+          </div>
+        `;
+      }).join('')}
+    `;
+  }else if(coliseumUI.tab === 'arena'){
+    const b = coliseumUI.battle;
+    if(!b){
+      body.innerHTML = `
+        <div class="col-card" style="text-align:center;padding:20px 12px">
+          <div style="font-size:34px;margin-bottom:6px">🏟️</div>
+          <div style="font-weight:900;font-size:14px;color:#ffd97d">Arena del Coliseo Lista</div>
+          <p style="font-size:12px;color:#d6bea0;margin:6px 0 12px">Selecciona tu escuadrón y desafía a un rival para presenciar el combate táctico en tiempo real.</p>
+          <button type="button" class="col-btn" onclick="coliseumUI.tab='rivals';renderColiseumScreen()">⚔️ Elegir Rival</button>
+        </div>
+      `;
+      return;
+    }
+    const remSec = Math.max(0, Math.ceil(b.maxDuration - b.elapsed));
+    body.innerHTML = `
+      <div class="col-arena-stage">
+        <div class="col-arena-arch"><span>🏛️</span><span>🔥</span><span>👑</span><span>🔥</span><span>🏛️</span></div>
+        <div class="col-arena-timer">⏱️ ${remSec}s · VS #${b.rivalRank}</div>
+        ${b.units.map(u => {
+          const hpPct = Math.max(0, Math.round((u.hp / u.maxHp) * 100));
+          const enPct = Math.max(0, Math.min(100, Math.round(u.energy)));
+          return `
+            <div class="arena-unit ${u.side} ${u.hp <= 0 ? 'dead' : ''} ${u.hitT > 0 ? 'hit' : ''} ${u.anim || ''}" style="left:${u.x}%;top:${u.y}%">
+              <div class="au-fx">${u.fxText || ''}</div>
+              <div class="au-bars">
+                <div class="au-hp"><i style="width:${hpPct}%"></i></div>
+                <div class="au-en"><i style="width:${enPct}%"></i></div>
+              </div>
+              <div class="au-sprite">${u.ico}</div>
+              <div class="au-name">${u.name}</div>
+            </div>
+          `;
+        }).join('')}
+        ${b.floats.map(f => `<div class="arena-float" style="left:${f.x}%;top:${f.y}%;color:${f.color}">${f.text}</div>`).join('')}
+        ${b.ultFx ? `<div class="ult-fx"><div style="font-size:46px">${b.ultFx.ico}</div><div style="font-size:15px">${b.ultFx.hero}</div><div style="font-size:19px;color:#ffd166">${b.ultFx.name}</div></div>` : ''}
+        <div class="arena-fx-banner">${b.banner}</div>
+      </div>
+
+      ${b.finished ? `
+        <div class="col-card" style="border-color:${b.won ? '#4ade80' : '#f87171'};text-align:center">
+          <div style="font-size:18px;font-weight:900;color:${b.won ? '#4ade80' : '#f87171'}">${b.won ? '🏆 ¡VICTORIA EN EL COLISEO!' : '💀 DERROTA EN EL COLISEO'}</div>
+          <div style="font-size:12px;color:#fff2d6;margin:5px 0 10px">${b.rewardSummary}</div>
+          <div style="display:flex;gap:6px">
+            <button type="button" class="col-btn sec" style="flex:1" onclick="coliseumUI.tab='history';coliseumUI.reportOpen=true;renderColiseumScreen()">📜 Ver Informe</button>
+            <button type="button" class="col-btn" style="flex:1" onclick="coliseumUI.tab='rivals';renderColiseumScreen()">⚔️ Siguiente Rival</button>
+          </div>
+        </div>
+      ` : `
+        <div class="col-card" style="font-size:11.5px;color:#e5d0b3;display:flex;justify-content:space-between;align-items:center">
+          <span>Combate automático en curso (habilidades y definitivas)</span>
+          <button type="button" class="col-btn danger" style="padding:5px 8px;font-size:11px" onclick="finishColiseumBattle(false)">🏳️ Rendirse</button>
+        </div>
+      `}
+
+      <div class="col-sec-title"><span>Registro de Batalla</span></div>
+      <div class="col-card" style="max-height:130px;overflow-y:auto;font-size:11px;line-height:1.45;color:#eddcc4">
+        ${b.events.slice(0, 12).map(ev => `<div>${ev}</div>`).join('')}
+      </div>
+    `;
+  }else if(coliseumUI.tab === 'ranking'){
+    const q = (coliseumUI.searchQuery || '').trim().toLowerCase().replace('#', '');
+    const lim = coliseumUI.rankLimit || 50;
+    const rows = [];
+    for(let r = 1; r <= 1000; r++){
+      const e = getRankingEntryByRank(r);
+      if(!q || e.name.toLowerCase().includes(q) || String(r) === q) rows.push(e);
+    }
+    const shown = rows.slice(0, q ? 60 : lim);
+    const titles = ['👑 Campeón del Coliseo', '🥈 Segundo lugar', '🥉 Tercer lugar'];
+    body.innerHTML = `
+      <div class="col-sec-title"><span>Clasificación (1 – 1,000)</span>
+        <button type="button" class="col-btn sec" style="padding:4px 8px;font-size:11px" onclick="coliseumUI.searchQuery='';coliseumUI.rankLimit=Math.min(1000,Math.ceil(ensureColiseumState().rank/50)*50);renderColiseumScreen();setTimeout(()=>{const m=document.getElementById('myRankRow');if(m)m.scrollIntoView({block:'center'})},50)">📍 Mi puesto #${col.rank}</button></div>
+      <input type="text" placeholder="🔍 Buscar por nombre o puesto..." value="${coliseumUI.searchQuery || ''}"
+        oninput="coliseumUI.searchQuery=this.value;renderColiseumScreen()"
+        style="width:100%;padding:8px 10px;border-radius:10px;border:1px solid #c9973e;background:#1a0f08;color:#fff;font-size:12px;margin-bottom:8px;box-sizing:border-box">
+      <div style="font-size:10.5px;color:#d6bea0;margin-bottom:6px">Clasificación <b>local</b>: los demás puestos son bots. Una clasificación mundial real requiere un servidor y una base de datos compartida.</div>
+      ${shown.map(e => {
+        const me = e.id === 'player';
+        const pw = e.squad.reduce((a, hid) => a + getColiseumUnitPower(hid, e.heroLv), 0);
+        return `<div ${me ? 'id="myRankRow"' : ''} class="rank-row rr ${me ? 'me' : ''} ${e.rank <= 3 ? 'top' + e.rank : ''}">
+          <div class="rank-num">${e.rank <= 3 ? ['🥇','🥈','🥉'][e.rank - 1] : '#' + e.rank}</div>
+          <div class="av">${avatarOfEntry(e)}</div>
+          <div><b style="color:#fff4dc">${e.name}</b><span class="tag ${me ? 'me' : e.isBot ? 'bot' : 'real'}">${me ? 'TÚ' : e.isBot ? 'BOT' : 'JUGADOR'}</span>
+            <div style="font-size:10.5px;color:#d6bea0">${e.rank <= 3 ? '<b style="color:#ffd56b">' + titles[e.rank - 1] + '</b> · ' : ''}${e.squad.map(hid => getHeroById(hid).ico).join(' ') || 'Sin escuadrón'}</div></div>
+          <div style="font-size:11px;font-weight:900;color:#ffd56b;text-align:right">⚡ ${fmtNum(pw)}</div>
+        </div>`;
+      }).join('')}
+      ${!q && lim < 1000 ? `<button type="button" class="col-btn sec" style="width:100%" onclick="coliseumUI.rankLimit=${lim + 50};renderColiseumScreen()">Mostrar más (${lim}/1000)</button>` : ''}
+    `;
+  }else if(coliseumUI.tab === 'rewards'){
+    body.innerHTML = `
+      <div class="col-sec-title"><span>Recompensas Diarias por Puesto</span></div>
+      <div class="col-card" style="text-align:center">
+        <div style="font-size:13px;font-weight:900;color:#ffd97d">Tu Puesto Actual: #${col.rank}</div>
+        <div style="font-size:12px;color:#ebd8bd;margin:4px 0 8px">${rewardTier.label} · Se entregan <b>${rewardTier.gems} 💎</b> al cierre diario (00:00) según tu puesto</div>
+        <button type="button" class="col-btn" ${canClaimDaily ? '' : 'disabled'} onclick="claimColiseumDailyReward()">
+          ${canClaimDaily ? `🎁 Reclamar ${pendTotal} 💎` : '✅ Sin recompensas pendientes'}
+        </button>
+      </div>
+      ${COLISEUM_DAILY_REWARDS.map(t => `
+        <div class="rank-row ${col.rank >= t.min && col.rank <= t.max ? 'me' : ''}">
+          <div class="rank-num">#${t.min}${t.max > t.min ? '-'+t.max : ''}</div>
+          <div><b>${t.label}</b></div>
+          <div style="font-weight:900;color:#67e8f9">+${t.gems} 💎/día</div>
+        </div>
+      `).join('')}
+    `;
+  }else if(coliseumUI.tab === 'history'){
+    const sel = col.history.find(h => h.id === coliseumUI.selectedHistoryId);
+    if(coliseumUI.reportOpen && sel){
+      const mvp = [...sel.allies].sort((a, c) => c.dmgDealt - a.dmgDealt)[0];
+      const alive = sel.allies.filter(a => a.hpLeft > 0).length, ealive = sel.enemies.filter(a => a.hpLeft > 0).length;
+      const rowH = (a, c) => `<div style="font-size:11px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.08)">${a.ico} <b>${a.name}</b> Nv.${a.lv} · ❤️ ${Math.round(a.hpLeft)}/${a.maxHp} · 🗡️ daño <b>${a.dmgDealt}</b> · ✨ habilidades ${a.skillsUsed}</div>`;
+      body.innerHTML = `
+        <div class="col-sec-title"><span>Informe de Batalla</span><button type="button" class="col-btn sec" style="padding:4px 8px;font-size:11px" onclick="coliseumUI.reportOpen=false;renderColiseumScreen()">← Lista</button></div>
+        <div class="col-card" style="border-color:${sel.won ? '#4ade80' : '#f87171'}">
+          <div style="font-weight:900;font-size:15px;color:${sel.won ? '#4ade80' : '#f87171'}">${sel.won ? '🏆 VICTORIA' : '💀 DERROTA'} · ${sel.duration}s</div>
+          <div style="font-size:12px;margin:4px 0"><span class="av" style="display:inline-grid">👑</span> ${col.playerName} <b>VS</b> <span class="av" style="display:inline-grid">${sel.rivalAvatar || '⚔️'}</span> ${sel.rivalName} (#${sel.rivalRank})</div>
+          <div style="font-size:11px;color:#d6bea0">Puesto: #${sel.prevRank} → #${sel.newRank} · ${sel.rewardSummary}</div>
+        </div>
+        <div class="col-card"><div style="font-weight:900;color:#ffd56b;margin-bottom:4px">Resumen</div>
+          <div style="font-size:11.5px;line-height:1.5">${sel.won ? 'Tu escuadrón derrotó al rival' : 'El rival resistió el asalto'} en ${sel.duration}s. Quedaron en pie ${alive}/${sel.allies.length} de tus héroes y ${ealive}/${sel.enemies.length} rivales. ${mvp ? `Mejor daño: ${mvp.ico} ${mvp.name} (${mvp.dmgDealt}).` : ''}</div></div>
+        <div class="col-card"><div style="font-weight:900;color:#ffd56b">Tu escuadrón</div>${sel.allies.map(rowH).join('')}
+          <div style="font-weight:900;color:#fca5a5;margin-top:8px">Escuadrón rival</div>${sel.enemies.map(rowH).join('')}</div>
+        <div class="col-card"><div style="font-weight:900;color:#ffd56b;margin-bottom:4px">Eventos importantes</div>
+          <div style="font-size:11px;line-height:1.5;max-height:200px;overflow:auto">${[...sel.events].reverse().map(e => `<div>${e}</div>`).join('')}</div></div>`;
+    }else{
+      body.innerHTML = `
+        <div class="col-sec-title"><span>Resultados de Combate</span><button type="button" class="col-btn sec" style="padding:4px 8px;font-size:11px" onclick="coliseumUI.tab='squad';renderColiseumScreen()">← Volver</button></div>
+        ${col.history.length === 0 ? '<div class="col-card" style="font-size:12px;color:#d6bea0">Aún no has disputado combates en el Coliseo.</div>' : col.history.map(rep => `
+          <div class="hist-row ${rep.won ? 'w' : 'l'}">
+            <div class="av">${rep.rivalAvatar || '⚔️'}</div>
+            <div><b style="color:#fff4dc">${rep.rivalName}</b> <span style="font-size:10.5px;color:#d6bea0">#${rep.rivalRank}</span>
+              <div style="font-size:10.5px;color:#d6bea0">${rep.date} · <b style="color:${rep.won ? '#4ade80' : '#f87171'}">${rep.won ? 'VICTORIA' : 'DERROTA'}</b> · #${rep.prevRank} → #${rep.newRank}</div></div>
+            <button type="button" class="col-btn sec" style="padding:6px 9px" title="Detalle del combate" onclick="coliseumUI.selectedHistoryId='${rep.id}';coliseumUI.reportOpen=true;renderColiseumScreen()">🗺️</button>
+          </div>`).join('')}`;
+    }
+  }
 }
 
 function getTroopCountByCat(cat){
   const t = state.troops || {};
-  if(cat === 'infantry') return (t.infantry || 0) + (t.infantry2 || 0);
-  if(cat === 'cavalry') return (t.cavalry || 0) + (t.cavalry2 || 0);
-  if(cat === 'artillery') return (t.artillery || 0) + (t.artillery2 || 0);
-  if(cat === 'siege') return (t.siege || 0) + (t.siege2 || 0);
+  if(cat === 'infantry') return (t.infantry || 0) + (t.infantry2 || 0) + (t.infantry3 || 0) + (t.infantry4 || 0) + (t.infantry5 || 0);
+  if(cat === 'cavalry') return (t.cavalry || 0) + (t.cavalry2 || 0) + (t.cavalry3 || 0) + (t.cavalry4 || 0) + (t.cavalry5 || 0);
+  if(cat === 'artillery') return (t.artillery || 0) + (t.artillery2 || 0) + (t.artillery3 || 0) + (t.artillery4 || 0) + (t.artillery5 || 0);
+  if(cat === 'siege') return (t.siege || 0) + (t.siege2 || 0) + (t.siege3 || 0) + (t.siege4 || 0) + (t.siege5 || 0);
   return 0;
-}
-
-function startHeroArenaBattle(){
-  ensureHeroState();
-  const h = getHeroById(combatState.selectedHeroId);
-  combatState.arena = {
-    active: true,
-    won: null,
-    player: {
-      name: h.name, role: h.role, ico: h.ico,
-      hp: h.hp, maxHp: h.hp, atk: h.atk, def: h.def, critChance: h.critChance,
-      shield: 0, ultCharge: 0, // 0..100
-      cd: {s1: 0, s2: 0},
-      s1: h.s1, s2: h.s2, ult: h.ult,
-      anim: ''
-    },
-    enemy: {
-      name: 'Guardián de Mazmorra', role: 'Coliseo', ico: '👹',
-      hp: 560, maxHp: 560, atk: 32, def: 16, critChance: 0.22,
-      shield: 0, ultCharge: 0,
-      cd: {s1: 0, s2: 0},
-      anim: '',
-      log: []
-    },
-    logs: [`⚔️ Combate de Héroes iniciado: ${h.name} vs Guardián de Mazmorra.`]
-  };
-}
-
-function addArenaUltCharge(unit, amount, reason){
-  if(!unit || unit.hp <= 0) return;
-  const prev = unit.ultCharge;
-  unit.ultCharge = Math.min(100, unit.ultCharge + amount);
-  if(prev < 100 && unit.ultCharge >= 100 && combatState.arena){
-    combatState.arena.logs.unshift(`✨ ¡ULTI LISTA para ${unit.name}! (${reason})`);
-  }
-}
-
-function applyArenaDamage(attacker, defender, rawDmg, forceCrit = false){
-  const isCrit = forceCrit || (Math.random() < (attacker.critChance || 0.15));
-  let dmg = Math.max(8, Math.round(rawDmg * (isCrit ? 1.65 : 1) - (defender.def || 0) * 0.35));
-
-  if(defender.shield > 0){
-    const absorbed = Math.min(defender.shield, dmg);
-    defender.shield -= absorbed;
-    dmg -= absorbed;
-  }
-
-  defender.hp = Math.max(0, defender.hp - dmg);
-  defender.anim = isCrit ? 'crit-hit' : 'hit';
-  setTimeout(() => {
-    if(combatState.arena){
-      if(combatState.arena.player === defender) defender.anim = '';
-      if(combatState.arena.enemy === defender) defender.anim = '';
-    }
-  }, 220);
-
-  // En Mazmorra / Coliseo: la barra de Ulti carga con el tiempo,
-  // un poco más rápido si recibe daño, y más rápido aún si recibe daño crítico.
-  const gain = isCrit ? 22 : 12;
-  addArenaUltCharge(defender, gain, isCrit ? 'daño crítico recibido' : 'daño recibido');
-
-  return {dmg, isCrit};
-}
-
-function useArenaSkill(skillKey){
-  const ar = combatState.arena;
-  if(!ar || !ar.active) return;
-  const p = ar.player;
-  const e = ar.enemy;
-  if(p.hp <= 0 || e.hp <= 0) return;
-
-  if(skillKey === 's1' || skillKey === 's2'){
-    if((p.cd[skillKey] || 0) > 0){
-      toast('⏳ Habilidad en enfriamiento');
-      return;
-    }
-    const sk = p[skillKey];
-    p.cd[skillKey] = sk.cd;
-    if(sk.heal){
-      p.hp = Math.min(p.maxHp, p.hp + sk.heal);
-      ar.logs.unshift(`💚 ${p.name} usa ${sk.name} (+${sk.heal} HP).`);
-    }
-    if(sk.shield){
-      p.shield = (p.shield || 0) + sk.shield;
-      ar.logs.unshift(`🛡️ ${p.name} activa ${sk.name} (+${sk.shield} escudo).`);
-    }
-    if(sk.mult){
-      const res = applyArenaDamage(p, e, p.atk * sk.mult, skillKey === 's2' && p.role === 'Tirador');
-      ar.logs.unshift(`${res.isCrit ? '💥 CRÍTICO' : '⚔️'} ${p.name} usa ${sk.name} (${res.dmg} daño).`);
-    }
-  }else if(skillKey === 'ult'){
-    if(p.ultCharge < 100){
-      toast('⚡ La Ulti aún no está cargada al 100%');
-      return;
-    }
-    p.ultCharge = 0;
-    if(p.ult.heal){
-      p.hp = Math.min(p.maxHp, p.hp + p.ult.heal);
-      p.shield = (p.shield || 0) + (p.ult.shield || 60);
-    }
-    const res = applyArenaDamage(p, e, p.atk * (p.ult.mult || 2.2), true);
-    ar.logs.unshift(`🌟 ¡ULTI ${p.ult.name}! ${p.name} inflige ${res.dmg} de daño${p.ult.heal ? ` y cura +${p.ult.heal} HP` : ''}.`);
-  }
-
-  checkArenaEnd();
-  renderHUD();
-}
-
-function checkArenaEnd(){
-  const ar = combatState.arena;
-  if(!ar || !ar.active) return;
-  if(ar.enemy.hp <= 0){
-    ar.active = false;
-    ar.won = true;
-    state.gems = (state.gems || 0) + 15;
-    saveState();
-    ar.logs.unshift('🏆 ¡Victoria en Mazmorra/Coliseo! +15 💎');
-  }else if(ar.player.hp <= 0){
-    ar.active = false;
-    ar.won = false;
-    ar.logs.unshift('💀 Tu héroe cayó en el coliseo. ¡Inténtalo de nuevo!');
-  }
-}
-
-function tickHeroArena(dt){
-  const ar = combatState.arena;
-  if(!ar || !ar.active) return;
-  const p = ar.player;
-  const e = ar.enemy;
-
-  // Cooldowns y carga pasiva de Ulti por tiempo
-  p.cd.s1 = Math.max(0, (p.cd.s1 || 0) - dt);
-  p.cd.s2 = Math.max(0, (p.cd.s2 || 0) - dt);
-  e.cd.s1 = Math.max(0, (e.cd.s1 || 0) - dt);
-  e.cd.s2 = Math.max(0, (e.cd.s2 || 0) - dt);
-
-  addArenaUltCharge(p, 7 * dt, 'paso del tiempo');
-  addArenaUltCharge(e, 7 * dt, 'paso del tiempo');
-
-  // Ataque automático periódico del enemigo
-  e._atkTimer = (e._atkTimer || 0) + dt;
-  if(e._atkTimer >= 2.2){
-    e._atkTimer = 0;
-    const useCrit = Math.random() < e.critChance;
-    const res = applyArenaDamage(e, p, e.atk * (useCrit ? 1.25 : 0.9), useCrit);
-    ar.logs.unshift(`${res.isCrit ? '💥 CRÍTICO rival' : '👹 Rival'} golpea por ${res.dmg} daño.`);
-    if(e.ultCharge >= 100){
-      e.ultCharge = 0;
-      const uRes = applyArenaDamage(e, p, e.atk * 1.85, true);
-      ar.logs.unshift(`🔥 ¡El guardián lanza su Ulti por ${uRes.dmg} daño!`);
-    }
-    checkArenaEnd();
-  }
 }
 
 // Modo 2: Ataque a Jugador (PvP con Tropas + Héroes de Apoyo)
@@ -4723,7 +5694,7 @@ function usePvpSupportSkill(){
       activeSupporters++;
       bonusDmg += Math.max(2, Math.round(sq.troops * 0.25));
       if(sq.cat === 'siege'){
-        bonusDmg += 4; // Apoyo extra de asedio/soporte
+        bonusDmg += 4;
       }
     }
   });
@@ -4803,7 +5774,6 @@ function tickPvpCombat(dt){
 
     pvp.enemyTroops = Math.max(0, pvp.enemyTroops - Math.max(1, Math.round(myPower)));
 
-    // Daño enemigo repartido en categorías
     pvp.squads.forEach(sq => {
       if(sq.troops > 0){
         const loss = Math.min(sq.troops, Math.random() < 0.55 * (1 - lossReduction) ? 1 : 0);
@@ -4812,7 +5782,6 @@ function tickPvpCombat(dt){
           if(!lostTroopId) return;
           sq.troops -= loss;
 
-          // Si la categoría de su tropa desaparece por completo, el héroe hace animación de derrota pero la batalla continúa
           if(sq.troops <= 0 && !sq.heroDefeated){
             sq.heroDefeated = true;
             pvp.logs.unshift(`💔 ¡${sq.label} eliminada! ${sq.heroName} (${sq.heroRole}) muestra animación de derrota, pero la batalla continúa.`);
@@ -4826,116 +5795,62 @@ function tickPvpCombat(dt){
 }
 
 function renderCombatSheet(){
-  ensureHeroState();
-  const tab = combatState.tab || 'hero_arena';
-  const ar = combatState.arena;
+  const col = ensureColiseumState();
   const pvp = combatState.pvp;
+  const unlockedSlots = getColiseumUnlockedSlots();
+  const activeCount = getActiveColiseumSquad().length;
 
   $('#sheet').innerHTML = `
     <div class="sh-head">
-      <div class="bigico" style="background:#5b2d7a">⚔️</div>
+      <div class="bigico" style="background:#7c3aed">⚔️</div>
       <div>
         <h2>Modos de Combate</h2>
-        <p>Mazmorra/Coliseo (Héroes) y Ataque a Jugador (Tropas + Apoyo)</p>
+        <p>Coliseo Imperial de Héroes y Asaltos con Tropas</p>
       </div>
       <button type="button" class="x" onclick="closeSheet()">✕</button>
     </div>
 
-    <div class="mode-tabs">
-      <button type="button" class="mode-tab ${tab === 'hero_arena' ? 'active' : ''}" onclick="combatState.tab='hero_arena';renderHUD()">🏛️ Mazmorra / Coliseo</button>
-      <button type="button" class="mode-tab ${tab === 'pvp_siege' ? 'active' : ''}" onclick="combatState.tab='pvp_siege';renderHUD()">🏴 Ataque a Jugador</button>
+    <div class="info-box" style="border:1px solid rgba(217,155,56,.5);background:linear-gradient(180deg,rgba(92,53,24,.45),rgba(38,22,12,.6))">
+      <div class="info-row"><span>🏟️ <b>Coliseo Imperial (Héroes)</b></span><span style="color:#ffd56b;font-weight:900">Puesto #${col.rank}</span></div>
+      <div class="info-row"><span>Escuadrón activo</span><b>${activeCount}/${unlockedSlots} héroes</b></div>
+      <div class="info-row"><span>Intentos diarios</span><b>${col.dailyAttemptsLeft}/5</b></div>
+      <button type="button" class="btn sm gold" style="margin-top:6px" onclick="openColiseumScreen('squad')">🏟️ Entrar al Coliseo y Héroes</button>
     </div>
 
-    ${tab === 'hero_arena' ? `
-      <div class="info-box">
-        <div class="info-row"><span>Héroe</span>
-          <select id="arenaHeroSelect" style="background:#10192b;color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:3px 6px" onchange="combatState.selectedHeroId=this.value">
-            ${HEROES.map(h => `<option value="${h.id}" ${combatState.selectedHeroId===h.id?'selected':''}>${h.ico} ${h.name} (${h.role})</option>`).join('')}
-          </select>
-        </div>
-        <button type="button" class="btn sm gold" style="margin-top:6px" onclick="startHeroArenaBattle();renderHUD()">⚔️ Iniciar Combate de Héroes</button>
+    <div class="info-box">
+      <div style="font-weight:900;font-size:12.5px;margin-bottom:4px">🏴 Ataque a Jugador (Tropas + Apoyo)</div>
+      <div style="font-size:11.5px;color:var(--mute);margin-bottom:6px">Selecciona un objetivo rival para enviar tus tropas apoyadas por héroes:</div>
+      <div class="grid2">
+        ${PVP_TARGETS.map((t, i) => `<button type="button" class="btn sm gold" onclick="startPvpBattle(${i});renderHUD()">🏴 ${t.name} (${t.power})</button>`).join('')}
       </div>
+    </div>
 
-      ${ar ? `
-        <div class="arena-box">
-          <div class="fighters-row">
-            <div class="side-col">
-              <div class="fighter ${ar.player.anim || ''}">
-                <div class="f-top"><span>${ar.player.ico} ${ar.player.name}</span><span>${ar.player.hp}/${ar.player.maxHp}</span></div>
-                <div class="hp-bar"><span style="width:${Math.max(0,Math.round(ar.player.hp/ar.player.maxHp*100))}%"></span></div>
-                <div class="ult-mini"><span style="width:${Math.round(ar.player.ultCharge)}%"></span></div>
+    ${pvp ? `
+      <div class="arena-box">
+        <div class="f-top"><span>Objetivo: ${pvp.targetName}</span><span>Fuerzas rivales: ${pvp.enemyTroops}/${pvp.maxEnemyTroops}</span></div>
+        <div class="hp-bar enemy" style="margin-bottom:8px"><span style="width:${Math.max(0,Math.round(pvp.enemyTroops/Math.max(1,pvp.maxEnemyTroops)*100))}%"></span></div>
+
+        <div class="pvp-squad-grid">
+          ${pvp.squads.map(sq => `
+            <div class="sq-card ${sq.heroDefeated ? 'gone' : ''}">
+              <div class="f-top"><span>${sq.ico} ${sq.label}</span><b>${sq.troops}</b></div>
+              <div style="margin-top:3px">${sq.heroIco} ${sq.heroName} (${sq.heroRole})</div>
+              <div style="color:${sq.heroDefeated?'var(--bad)':'var(--ok)'};font-weight:800;margin-top:2px">
+                ${sq.heroDefeated ? '💀 Derrota (batalla sigue)' : '✨ Apoyando tropa'}
               </div>
             </div>
-            <div class="vs-pill">VS</div>
-            <div class="side-col">
-              <div class="fighter ${ar.enemy.anim || ''}">
-                <div class="f-top"><span>${ar.enemy.ico} ${ar.enemy.name}</span><span>${ar.enemy.hp}/${ar.enemy.maxHp}</span></div>
-                <div class="hp-bar enemy"><span style="width:${Math.max(0,Math.round(ar.enemy.hp/ar.enemy.maxHp*100))}%"></span></div>
-                <div class="ult-mini"><span style="width:${Math.round(ar.enemy.ultCharge)}%"></span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="skill-dock">
-            <div class="ult-bottom-wrap">
-              <div class="ult-label"><span>⚡ BARRA DE ULTI (${ar.player.ult.name})</span><b>${Math.round(ar.player.ultCharge)}%</b></div>
-              <div class="ult-bottom-bar"><span style="width:${Math.round(ar.player.ultCharge)}%"></span></div>
-            </div>
-            <div class="skills-grid">
-              <button type="button" class="sk-btn ${ar.player.cd.s1<=0?'ready':'cd'}" onclick="useArenaSkill('s1')">
-                <span>H1 · ${ar.player.s1.name.split(' ')[0]}</span>
-                <small>${ar.player.cd.s1>0 ? Math.ceil(ar.player.cd.s1)+'s' : 'Listo'}</small>
-              </button>
-              <button type="button" class="sk-btn ${ar.player.cd.s2<=0?'ready':'cd'}" onclick="useArenaSkill('s2')">
-                <span>H2 · ${ar.player.s2.name.split(' ')[0]}</span>
-                <small>${ar.player.cd.s2>0 ? Math.ceil(ar.player.cd.s2)+'s' : 'Listo'}</small>
-              </button>
-              <button type="button" class="sk-btn ult ${ar.player.ultCharge>=100?'ready':'cd'}" onclick="useArenaSkill('ult')">
-                <span>H3 · ULTI</span>
-                <small>${ar.player.ultCharge>=100 ? '¡LANZAR!' : Math.round(ar.player.ultCharge)+'%'}</small>
-              </button>
-            </div>
-          </div>
-
-          <div class="combat-log">${ar.logs.slice(0,5).map(l => `<div>${l}</div>`).join('')}</div>
+          `).join('')}
         </div>
-      ` : ''}
-    ` : `
-      <div class="info-box">
-        <div style="font-size:12px;color:var(--mute);margin-bottom:6px">Selecciona un objetivo rival para enviar tus tropas apoyadas por héroes (sin carga acelerada por daño; si una tropa cae, su héroe muestra animación de derrota y la batalla continúa):</div>
-        <div class="grid2">
-          ${PVP_TARGETS.map((t, i) => `<button type="button" class="btn sm gold" onclick="startPvpBattle(${i});renderHUD()">🏴 ${t.name} (${t.power})</button>`).join('')}
-        </div>
+
+        <button type="button" class="btn sm ${pvp.active && pvp.supportCd<=0 ? 'gem' : 'dim'}" onclick="usePvpSupportSkill()">
+          ${pvp.supportCd>0 ? `⏳ Apoyo de Héroes (${Math.ceil(pvp.supportCd)}s)` : '✨ Activar Habilidades de Apoyo a Tropas'}
+        </button>
+
+        <div class="combat-log">${pvp.logs.slice(0,5).map(l => `<div>${l}</div>`).join('')}</div>
       </div>
-
-      ${pvp ? `
-        <div class="arena-box">
-          <div class="f-top"><span>Objetivo: ${pvp.targetName}</span><span>Fuerzas rivales: ${pvp.enemyTroops}/${pvp.maxEnemyTroops}</span></div>
-          <div class="hp-bar enemy" style="margin-bottom:8px"><span style="width:${Math.max(0,Math.round(pvp.enemyTroops/Math.max(1,pvp.maxEnemyTroops)*100))}%"></span></div>
-
-          <div class="pvp-squad-grid">
-            ${pvp.squads.map(sq => `
-              <div class="sq-card ${sq.heroDefeated ? 'gone' : ''}">
-                <div class="f-top"><span>${sq.ico} ${sq.label}</span><b>${sq.troops}</b></div>
-                <div style="margin-top:3px">${sq.heroIco} ${sq.heroName} (${sq.heroRole})</div>
-                <div style="color:${sq.heroDefeated?'var(--bad)':'var(--ok)'};font-weight:800;margin-top:2px">
-                  ${sq.heroDefeated ? '💀 Derrota (batalla sigue)' : '✨ Apoyando tropa'}
-                </div>
-              </div>
-            `).join('')}
-          </div>
-
-          <button type="button" class="btn sm ${pvp.active && pvp.supportCd<=0 ? 'gem' : 'dim'}" onclick="usePvpSupportSkill()">
-            ${pvp.supportCd>0 ? `⏳ Apoyo de Héroes (${Math.ceil(pvp.supportCd)}s)` : '✨ Activar Habilidades de Apoyo a Tropas'}
-          </button>
-
-          <div class="combat-log">${pvp.logs.slice(0,5).map(l => `<div>${l}</div>`).join('')}</div>
-        </div>
-      ` : ''}
-    `}
+    ` : ''}
   `;
 }
-
 
 // === MOTOR DE AUDIO LIGERO (WEB AUDIO API) ===
 const SoundEngine = (() => {
@@ -5093,6 +6008,17 @@ toast = function(msg){
       openSheet('offline');
     }
   }
+  const _colClose = document.getElementById('closeColiseumBtn');
+  if(_colClose) _colClose.addEventListener('click', closeColiseumScreen);
+
+  // Bucle fluido de 250ms para la arena visual del Coliseo
+  setInterval(() => {
+    if(coliseumUI.battle && coliseumUI.battle.active){
+      tickColiseumBattle(0.25);
+      if(coliseumUI.open && coliseumUI.tab === 'arena') renderColiseumScreen();
+    }
+  }, 250);
+
   SoundEngine.initFromState();
   saveState();
 
