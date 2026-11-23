@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0d1522">
 <meta name="description" content="Construye, investiga y defiende tu reino en este prototipo estratégico.">
-<title>Reino 4X — Edición mejorada</title>
+<title>Conqueror of Realms — Edición Alfa</title>
 <style>
 :root{
   --bg:#0d1522;
@@ -1223,11 +1223,11 @@ const CONFIG = {
   },
   allianceCastle: 8,                   // Castillo necesario para que aparezca Alianza (provisional)
   tutorial: {
-    guide: {name: 'Maestro Eldrin', ico: '🧙', image: null},
+    guide: {name: 'Princesa Jess', ico: '👸', image: null},
     buildSec: 5,                       // durante el tutorial todo es gratis y tarda 5 s
     steps: [
-      {id: 'welcome', kind: 'intro', msgs: ['¡Bienvenido a Reino 4X, mi señor! Soy Eldrin, tu consejero.', 'Hoy solo tienes tu Castillo. Te enseñaré a levantar tu reino paso a paso.']},
-      {id: 'farm', kind: 'build', bld: 'farm', msgs: ['Tu pueblo necesita comida. Toca la parcela marcada y construye una Granja.', 'No gastarás recursos y terminará en solo 5 segundos.'], hint: 'Construye la Granja en la parcela marcada', doneMsg: '¡Excelente! La Granja ya trabaja para ti.', reward: {food: 100, wood: 100}},
+      {id: 'welcome', kind: 'intro', msgs: ['¡Bienvenido a Conqueror of Realms, mi señor! Soy Jess, La Princesa Guía.', 'Hoy solo tienes tu Castillo. Te enseñaré a levantar tu reino paso a paso.']},
+      {id: 'farm', kind: 'build', bld: 'farm', msgs: ['Tu pueblo necesita comida. Toca la parcela marcada y construye una Granja.', 'No gastarás recursos y terminará en solo 5 segundos.'], hint: 'Construye la Granja en la parcela marcada', doneMsg: '¡Excelente, Mi Señor! La Granja ya trabaja para ti.', reward: {food: 100, wood: 100}},
       {id: 'castle2', kind: 'castle', toLv: 2, msgs: ['Ahora mejora tu Castillo. Tócalo y elige "Mejorar".'], hint: 'Mejora el Castillo a Nv. 2', doneMsg: '¡Tu Castillo es Nv. 2!', reward: {stone: 100, gold: 60}},
       {id: 'castle3', kind: 'castle', toLv: 3, msgs: ['Sigamos creciendo. Mejora el Castillo otra vez.'], hint: 'Mejora el Castillo a Nv. 3', doneMsg: '¡Nv. 3! Tu reino prospera.', reward: {food: 150, wood: 150}},
       {id: 'castle4', kind: 'castle', toLv: 4, msgs: ['Una vez más y habrás terminado mi lección.'], hint: 'Mejora el Castillo a Nv. 4', doneMsg: '¡Castillo Nv. 4! Desde aquí el reino es tuyo: construye, investiga y crea héroes.', reward: {food: 200, wood: 200, stone: 150, gold: 100}, gems: 30}
